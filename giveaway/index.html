@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>if(location.hostname.endsWith("github.io"))location.replace("https://candysim.xyz"+location.pathname.replace(/^\/candysim-site/,"")+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Website Launch Giveaway · CandySim</title>
 <meta name="description" content="The new CandySim website is live. We're celebrating with a giveaway, and two players win the Master rank.">
@@ -689,6 +690,37 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 @media (max-width: 1200px) and (min-width: 981px) { .nav-links:has(.nav-give) a { font-size: 13.5px; } .nav-links:has(.nav-give) { gap: 14px; } .nav-in:has(.nav-give) .nav-ext .icon-btn[aria-label="Store"] { display: none; } }
 @media (max-width: 1100px) and (min-width: 981px) { .nav-in:has(.nav-give) .nav-ext .icon-btn { display: none; } .nav-in:has(.nav-give) .logo .wordmark { display: none; } }
 
+/* Ranks (store.sk). Each card takes its rank's in game color; the tag is drawn
+   like the chat prefix, pixel font with Minecraft's quarter strength shadow. */
+.ranks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.rank-card { position: relative; display: grid; grid-template-rows: auto auto 1fr auto auto auto; gap: 16px; padding: 26px 22px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line);
+  background-image: radial-gradient(90% 50% at 50% 0%, color-mix(in srgb, var(--rc) 10%, transparent), transparent 70%); }
+.rank-card.top { border-color: color-mix(in srgb, var(--rc) 55%, transparent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--rc) 25%, transparent), 0 24px 60px color-mix(in srgb, var(--rc) 14%, transparent); }
+.rank-flag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px; border-radius: 999px; background: var(--rc); color: #fff; font: 800 11px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.rank-flag .crown { width: 15px; height: 11px; }
+.rank-tag { justify-self: center; font: 400 clamp(26px, 2.5vw, 32px)/1 var(--pixel); color: var(--rc); text-shadow: 0.1em 0.1em 0 color-mix(in srgb, var(--rc) 25%, #000); letter-spacing: 0.02em; }
+.rank-tag i { font-style: normal; color: var(--rd); }
+.rank-multi { display: grid; justify-items: center; gap: 2px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.rank-multi b { font: 800 44px/1 var(--display); font-stretch: 85%; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.rank-multi span { font: 600 12px var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.rank-perks { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; align-content: start; }
+.rank-perks li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14.5px; color: var(--muted); }
+.rank-perks b { color: var(--ink); font-variant-numeric: tabular-nums; display: inline-grid; }
+.rank-perks b svg { width: 17px; height: 17px; color: var(--mint); }
+.rank-perks em { font-style: normal; color: var(--dim); }
+.rank-cmds { font-size: 13.5px; color: var(--dim); line-height: 1.9; }
+.rank-price { display: flex; align-items: center; justify-content: center; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+.rank-price svg { width: 20px; height: 20px; }
+.rank-price b { font: 800 28px/1 var(--display); font-stretch: 88%; font-variant-numeric: tabular-nums; }
+.rank-price span { color: var(--muted); font-weight: 600; }
+.rank-up { margin-top: -8px; text-align: center; font: 500 12px var(--mono); color: var(--dim); }
+.ranks-foot { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px 28px; flex-wrap: wrap; }
+.ranks-foot p { color: var(--muted); max-width: 70ch; }
+.ranks-foot .btn-ghost { padding: 12px 16px; }
+.ranks-foot .btn-ghost svg { width: 18px; height: 18px; }
+@media (max-width: 1080px) { .ranks { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
+@media (max-width: 560px) { .ranks { grid-template-columns: 1fr; } .rank-multi b { font-size: 40px; } }
+
 /* The launch giveaway. Same dark CandySim world, with the rainbow kept to this
    page: one slow aurora behind the prize, an iridescent prize border, a few
    pixel candies. Everything decorative stops under reduced motion. */
@@ -935,7 +967,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
   </div>
   <div class="sheet" id="sheet" hidden>
     <nav class="wrap" aria-label="Menu">
-      <a href="./" class="nav-give on" aria-current="page"><i class="give-dot" aria-hidden="true"></i><span class="give-word">Giveaway</span></a><a href="../#plot">Plot</a><a href="../#machines">Machines</a><a href="../#progression">Progression</a><a href="../#leaderboards">Leaderboards</a><a href="../#players">Players</a><a href="../#hall" class="nav-hof"><svg class="crown" viewBox="0 0 24 18" aria-hidden="true"><path d="M2.2 5.6 7.4 10l4.6-8 4.6 8 5.2-4.4-2 10.2H4.2z" fill="#ffc94d" stroke="#b9831c" stroke-width="1.2" stroke-linejoin="round"/><rect x="4.2" y="15" width="15.6" height="2.2" rx="1" fill="#e9ab2e"/><circle cx="12" cy="2" r="1.5" fill="#fff1c7"/><circle cx="2.2" cy="5.6" r="1.3" fill="#fff1c7"/><circle cx="21.8" cy="5.6" r="1.3" fill="#fff1c7"/></svg>Hall of Fame</a><a href="../#story">Our story</a><a href="../#team">The team</a><a href="../#join">How to join</a>
+      <a href="./" class="nav-give on" aria-current="page"><i class="give-dot" aria-hidden="true"></i><span class="give-word">Giveaway</span></a><a href="../#plot">Plot</a><a href="../#machines">Machines</a><a href="../#progression">Progression</a><a href="../#leaderboards">Leaderboards</a><a href="../#players">Players</a><a href="../#hall" class="nav-hof"><svg class="crown" viewBox="0 0 24 18" aria-hidden="true"><path d="M2.2 5.6 7.4 10l4.6-8 4.6 8 5.2-4.4-2 10.2H4.2z" fill="#ffc94d" stroke="#b9831c" stroke-width="1.2" stroke-linejoin="round"/><rect x="4.2" y="15" width="15.6" height="2.2" rx="1" fill="#e9ab2e"/><circle cx="12" cy="2" r="1.5" fill="#fff1c7"/><circle cx="2.2" cy="5.6" r="1.3" fill="#fff1c7"/><circle cx="21.8" cy="5.6" r="1.3" fill="#fff1c7"/></svg>Hall of Fame</a><a href="../#ranks">Ranks</a><a href="../#story">Our story</a><a href="../#team">The team</a><a href="../#join">How to join</a>
       <div class="sheet-foot"><button class="ip " data-copy aria-label="Copy the server address CandySim.minehut.gg"><code>CandySim.minehut.gg</code><span class="state"><span class="ico ico-copy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="ico ico-check"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="state-text">Copy</span></span></button><div class="sheet-icons"><a class="icon-btn" href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener" aria-label="Discord" data-tip="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg></a><a class="icon-btn" href="https://candysim.tebex.io" target="_blank" rel="noopener" aria-label="Store" data-tip="Store"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a></div></div>
     </nav>
   </div>
@@ -1026,7 +1058,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
       <p>A candy factory server on Minecraft Java Edition. Build a plot of machines, farm, prestige and rebirth.</p>
       <div class="foot-icons"><a class="icon-btn" href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener" aria-label="Discord" data-tip="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg></a><a class="icon-btn" href="https://candysim.tebex.io" target="_blank" rel="noopener" aria-label="Store" data-tip="Store"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a></div>
     </div>
-    <nav class="foot-col" aria-label="Guide"><b>Guide</b><a href="../#loop">How it works</a><a href="../#plot">Your plot</a><a href="../#machines">Machines</a><a href="../#earn">Farm and Mine</a><a href="../#pets">Pets</a><a href="../#progression">Prestige and Rebirth</a></nav>
+    <nav class="foot-col" aria-label="Guide"><b>Guide</b><a href="../#loop">How it works</a><a href="../#plot">Your plot</a><a href="../#machines">Machines</a><a href="../#earn">Farm and Mine</a><a href="../#pets">Pets</a><a href="../#progression">Prestige and Rebirth</a><a href="../#ranks">Ranks</a></nav>
     <nav class="foot-col" aria-label="Community"><b>Community</b><a href="../#leaderboards">Leaderboards</a><a href="../#players">Player profiles</a><a href="../#hall">Hall of Fame</a><a href="./">Launch giveaway</a><a href="../#story">Our story</a><a href="../#team">The team</a><a href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener">Discord</a><a href="https://candysim.tebex.io" target="_blank" rel="noopener">Store</a></nav>
     <div class="foot-col"><b>Server address</b><span class="foot-ip">CandySim.minehut.gg</span><button class="ip small" data-copy aria-label="Copy the server address CandySim.minehut.gg"><code>CandySim.minehut.gg</code><span class="state"><span class="ico ico-copy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="ico ico-check"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="state-text">Copy</span></span></button></div>
   </div>
@@ -1106,6 +1138,18 @@ const LOOP = [
 ];
 // Plot squares: 1 to start, rank bonus squares (plotIsRankUnlockedSquare), the rest from Prestige credits. 25 max.
 const RANK_SQUARES = [["Baker", 1], ["Chef", 2], ["Pro", 3], ["Master", 4]];
+// Store ranks (store.sk getRankItem, rankFullPrice, upgrade prices; ranksperms.sk). Bought with Gems in /store.
+// Universal Multi is the real value from utils.sk getRankMulti (the store lore still says x2.15 for Master).
+const RANKS = [
+  { name: "Baker", tag: "BAKER", color: "#FF8000", dark: "#B35900", multi: "1.25", pets: "1.5", squares: 1, hoe: 10, daily: 15, buyAll: false,
+    cmds: ["/hat", "/ec", "/sit"], price: 600, bundle: 850 },
+  { name: "Chef", tag: "CHEF", color: "#00FFFF", dark: "#009999", multi: "1.5", pets: "2", squares: 2, hoe: 20, daily: 25, buyAll: false,
+    cmds: ["/nick", "/lay"], price: 1400, upgrade: 800, bundle: 1780 },
+  { name: "Pro", tag: "PRO", color: "#FF0088", dark: "#B3005F", multi: "1.75", pets: "2.5", squares: 3, hoe: 30, daily: 40, buyAll: true,
+    cmds: ["/fly", "/crawl", "/glow"], price: 3200, upgrade: 1800, bundle: 3640 },
+  { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.1", pets: "3", squares: 4, hoe: 40, daily: 60, buyAll: true,
+    cmds: ["/spin"], price: 7000, upgrade: 3800, bundle: 6720 },
+];
 // Stove head skins by tier bracket (factoryCoreHeadTexture, machine.sk).
 // machine.sk factoryCoreBracketKey
 const CORE_NAMES = { "1": "Furnace", "21": "Smoker", "41": "Blast Furnace", "61": "Molten Core", "81": "Candy Singularity" };
@@ -1173,6 +1217,25 @@ function machineName(t) {
 }
 function machineGlass(t) { return t >= 90 ? "black" : MACHINES.blocks[Math.max(1, t) - 1]; }
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]); }
+// Copy text: the Clipboard API first, then the older route for browsers that block it.
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) { }
+  try {
+    const t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;top:0;opacity:0";
+    document.body.append(t); t.select();
+    const ok = document.execCommand("copy"); t.remove(); return ok;
+  } catch (e) { return false; }
+}
+// When copying is blocked everywhere, show the address itself so it can be selected by hand.
+function showAddress(btn) {
+  const code = btn.querySelector("code"), label = btn.querySelector(".ip-label");
+  const el = code || label;
+  if (!el) return;
+  if (label && !code) { clearTimeout(btn.labelReset); const was = label.dataset.was || label.textContent; label.dataset.was = was; label.textContent = IP; btn.labelReset = setTimeout(() => { label.textContent = was; }, 5000); }
+  const r = document.createRange(); r.selectNodeContents(el);
+  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+}
 function titleCase(s) { return s.replace(/\b\w/g, c => c.toUpperCase()); }
 
 // Icons, drawn inline so they stay crisp and follow the text color.
@@ -1365,7 +1428,7 @@ function navHTML(base, current) {
   </div>
   <div class="sheet" id="sheet" hidden>
     <nav class="wrap" aria-label="Menu">
-      ${give}${NAV_LINKS.map(l => link(l)).join("")}<a href="${base}#story">Our story</a><a href="${base}#team">The team</a><a href="${base}#join">How to join</a>
+      ${give}${NAV_LINKS.map(l => link(l)).join("")}<a href="${base}#ranks">Ranks</a><a href="${base}#story">Our story</a><a href="${base}#team">The team</a><a href="${base}#join">How to join</a>
       <div class="sheet-foot">${ipButton()}<div class="sheet-icons">${iconLink(DISCORD, "Discord", ICON.discord)}${iconLink(STORE, "Store", ICON.cart)}</div></div>
     </nav>
   </div>
@@ -1381,7 +1444,7 @@ function footHTML(base) {
       <p>A candy factory server on Minecraft Java Edition. Build a plot of machines, farm, prestige and rebirth.</p>
       <div class="foot-icons">${iconLink(DISCORD, "Discord", ICON.discord)}${iconLink(STORE, "Store", ICON.cart)}</div>
     </div>
-    <nav class="foot-col" aria-label="Guide"><b>Guide</b>${a("loop", "How it works")}${a("plot", "Your plot")}${a("machines", "Machines")}${a("earn", "Farm and Mine")}${a("pets", "Pets")}${a("progression", "Prestige and Rebirth")}</nav>
+    <nav class="foot-col" aria-label="Guide"><b>Guide</b>${a("loop", "How it works")}${a("plot", "Your plot")}${a("machines", "Machines")}${a("earn", "Farm and Mine")}${a("pets", "Pets")}${a("progression", "Prestige and Rebirth")}${a("ranks", "Ranks")}</nav>
     <nav class="foot-col" aria-label="Community"><b>Community</b>${a("leaderboards", "Leaderboards")}${a("players", "Player profiles")}${a("hall", "Hall of Fame")}${give}${a("story", "Our story")}${a("team", "The team")}<a href="${DISCORD}" target="_blank" rel="noopener">Discord</a><a href="${STORE}" target="_blank" rel="noopener">Store</a></nav>
     <div class="foot-col"><b>Server address</b><span class="foot-ip">${IP}</span>${ipButton("small")}</div>
   </div>
@@ -1556,6 +1619,35 @@ ${navHTML("")}
         <div><span>Rebirth Points earned</span><b id="cPts">0</b></div>
         <div><span>Gems 💎 every 50 Prestige, once per account</span><b>+15</b></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ranks">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Ranks</span>
+      <h2>Four ranks. Bigger multis, more plot.</h2>
+      <p class="lede">Ranks are permanent and bought with Gems in <code class="cmd">/store</code>. Already ranked? Upgrading only costs the difference.</p>
+    </div>
+    <div class="ranks reveal">${RANKS.map((r, i) => `<article class="rank-card${i === RANKS.length - 1 ? " top" : ""}" style="--rc:${r.color};--rd:${r.dark}">
+      ${i === RANKS.length - 1 ? `<span class="rank-flag">${ICON.crown}Top rank</span>` : ""}
+      <span class="rank-tag" aria-label="${r.name} rank tag"><i>[</i>${r.tag}<i>]</i></span>
+      <div class="rank-multi"><b>x${r.multi}</b><span>Universal Multi</span></div>
+      <ul class="rank-perks">
+        <li><span>Bonus plot squares</span><b>+${r.squares}</b></li>
+        <li><span>Pet storage</span><b>x${r.pets}</b></li>
+        <li><span>Hoe enchant discount</span><b>${r.hoe}%</b></li>
+        <li><span><code class="cmd">/daily</code> Gems</span><b>+${r.daily}%</b></li>
+        <li><span>Shop Buy All</span><b>${r.buyAll ? ICON.check : '<em aria-label="No">·</em>'}</b></li>
+      </ul>
+      <p class="rank-cmds">${i ? `Everything in ${RANKS[i - 1].name}, plus ` : ""}${r.cmds.map(c => `<code class="cmd">${c}</code>`).join(" ")}</p>
+      <div class="rank-price">${ICON.gem}<b>${r.price.toLocaleString("en-US")}</b><span>Gems</span></div>
+      <p class="rank-up">${r.upgrade ? `${r.upgrade.toLocaleString("en-US")} Gems to upgrade from ${RANKS[i - 1].name}` : "The first step up"}</p>
+    </article>`).join("")}</div>
+    <div class="ranks-foot reveal">
+      <p>Earn Gems in game (<code class="cmd">/daily</code>, Prestige milestones, linking Discord) or grab a pack at the store. Bundles add lootboxes, a tag and a badge, from ${RANKS[0].bundle.toLocaleString("en-US")} Gems.</p>
+      <a class="btn-ghost" href="${STORE}" target="_blank" rel="noopener">${ICON.cart}Get Gems</a>
     </div>
   </div>
 </section>
@@ -2135,8 +2227,8 @@ function toast(text) {
 }
 document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
   const state = btn.querySelector(".state-text");
-  try { await navigator.clipboard.writeText(IP); btn.classList.add("copied"); state.textContent = "Copied"; toast(IP); }
-  catch (e) { state.textContent = "Select"; }
+  if (await copyText(IP)) { btn.classList.add("copied"); state.textContent = "Copied"; toast(IP); }
+  else { state.textContent = "Select"; showAddress(btn); }
   clearTimeout(btn.reset);
   btn.reset = setTimeout(() => { btn.classList.remove("copied"); state.textContent = "Copy"; }, 2000);
 }));
