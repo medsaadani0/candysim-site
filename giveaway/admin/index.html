@@ -984,7 +984,7 @@ const LOOP = [
 // Plot squares: 1 to start, rank bonus squares (plotIsRankUnlockedSquare), the rest from Prestige credits. 25 max.
 const RANK_SQUARES = [["Baker", 1], ["Chef", 2], ["Pro", 3], ["Master", 4]];
 // Store ranks (store.sk getRankItem, rankFullPrice, upgrade prices; ranksperms.sk). Bought with Gems in /store.
-// Universal Multi is the real value from utils.sk getRankMulti (the store lore still says x2.15 for Master).
+// Universal Multi matches utils.sk getRankMulti.
 const RANKS = [
   { name: "Baker", tag: "BAKER", color: "#FF8000", dark: "#B35900", multi: "1.25", pets: "1.5", squares: 1, hoe: 10, daily: 15, buyAll: false,
     cmds: ["/hat", "/ec", "/sit"], price: 600, bundle: 850 },
@@ -992,7 +992,7 @@ const RANKS = [
     cmds: ["/nick", "/lay"], price: 1400, upgrade: 800, bundle: 1780 },
   { name: "Pro", tag: "PRO", color: "#FF0088", dark: "#B3005F", multi: "1.75", pets: "2.5", squares: 3, hoe: 30, daily: 40, buyAll: true,
     cmds: ["/fly", "/crawl", "/glow"], price: 3200, upgrade: 1800, bundle: 3640 },
-  { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.1", pets: "3", squares: 4, hoe: 40, daily: 60, buyAll: true,
+  { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.15", pets: "3", squares: 4, hoe: 40, daily: 60, buyAll: true,
     cmds: ["/spin"], price: 7000, upgrade: 3800, bundle: 6720 },
 ];
 // Stove head skins by tier bracket (factoryCoreHeadTexture, machine.sk).
