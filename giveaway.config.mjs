@@ -37,6 +37,13 @@ export default {
   ],
   announcement: "The winners will be announced in the CandySim Discord.",
 
+  // After entries close: the Minecraft names of the winners, exactly as they
+  // entered. Once filled in, the prize card shows them and the intro and note
+  // below switch to the texts here. Leave empty until you have picked them.
+  winnerNames: [],
+  winnersIntro: "Entries are closed and the winners are in. Congratulations to our two new Masters!",
+  winnersNote: "The winners have been announced in the CandySim Discord.",
+
   // Anti abuse. Entries allowed from one network (one IP address), so a single
   // person cannot flood the list. Households share an address, so keep this above 1.
   maxEntriesPerNetwork: 5,
