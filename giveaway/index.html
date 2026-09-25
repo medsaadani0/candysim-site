@@ -915,7 +915,8 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
     </nav>
   </div>
 </header>
-<main id="main" class="gv" data-state="preview">
+<main id="main">
+<div class="gv" id="giveaway" data-state="preview">
 <section class="gv-hero" aria-labelledby="gvTitle">
   <div class="gv-sky" aria-hidden="true">
     <div class="gv-aurora"></div>
@@ -952,7 +953,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
   </div>
 </section>
 
-<section class="band gv-how">
+<section class="band alt gv-how">
   <div class="wrap gv-how-in">
     <div class="sec-head" style="margin:0">
       <span class="kicker">How it works</span>
@@ -971,7 +972,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
   </div>
 </section>
 
-<section class="band alt gv-crowd" id="crowd" aria-labelledby="crowdTitle">
+<section class="band gv-crowd" id="crowd" aria-labelledby="crowdTitle">
   <div class="wrap">
     <div class="crowd-head">
       <div class="sec-head" style="margin:0">
@@ -988,6 +989,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
     <button class="btn-ghost crowd-more" id="crowdMore" type="button" hidden>Show more</button>
   </div>
 </section>
+</div>
 </main>
 <footer class="foot">
   <div class="wrap foot-grid">
@@ -1038,7 +1040,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 <div class="toast" id="toast" role="status"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Copied <span id="toastText"></span></div></div>
 <script id="assets" type="application/json">{"logoSmall":"data:image/webp;base64,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","grain":"data:image/png;base64,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"}</script>
 <script id="machines" type="application/json">{"names":[],"blocks":[]}</script>
-<script id="giveaway" type="application/json">{"id":"website-launch-2026","live":false,"promote":true,"kicker":"CandySim website launch","title":"Website Launch Giveaway","intro":"The new CandySim website is live. We're celebrating with a giveaway, and one player takes the prize.","prize":"Prize to be announced","prizeDetail":"The prize is revealed here before entries open.","winners":1,"endsAt":"2026-10-09T20:00:00Z","rules":["One entry per Minecraft account and per Discord account.","Type your Minecraft username exactly, so the prize reaches the right account.","Entries using fake names or alt accounts can be removed.","The winner is chosen by the CandySim team after entries close."],"announcement":"The winner will be announced in the CandySim Discord.","href":"giveaway/"}</script>
+<script id="giveaway" type="application/json">{"id":"website-launch-2026","live":false,"promote":true,"kicker":"CandySim website launch","title":"Website Launch Giveaway","intro":"The new CandySim website is live. We're celebrating with a giveaway, and one player takes the prize.","prize":"Prize to be announced","prizeDetail":"The prize is revealed here before entries open.","winners":1,"endsAt":"2026-10-09T20:00:00Z","rules":["One entry per Minecraft account and per Discord account.","Type your Minecraft username exactly, so the prize reaches the right account.","Entries using fake names or alt accounts can be removed.","The winner is chosen by the CandySim team after entries close."],"announcement":"The winner will be announced in the CandySim Discord.","href":"./"}</script>
 <script>
 /* Everything on this page comes from the CandySim Skript source.
    File references are noted so the numbers can be rechecked when the server changes. */
@@ -1320,7 +1322,7 @@ function navHTML(base, current) {
   const home = base ? base : "#top";
   const link = ([id, l], nav) => `<a href="${base}#${id}"${nav && !base ? ` data-nav="${id}"` : ""}${id === "hall" ? ' class="nav-hof"' : ""}>${id === "hall" ? ICON.crown : ""}${l}</a>`;
   const give = current === "giveaway" || (!base && giveawayPromoted())
-    ? `<a href="${current === "giveaway" ? "./" : GIVEAWAY.href}" class="nav-give${current === "giveaway" ? " on" : ""}"${current === "giveaway" ? ' aria-current="page"' : ""}><i class="give-dot" aria-hidden="true"></i>Giveaway</a>` : "";
+    ? `<a href="${current === "giveaway" ? "./" : GIVEAWAY.href}"${!base && giveawayOnHome() ? ' data-nav="giveaway"' : ""} class="nav-give${current === "giveaway" ? " on" : ""}"${current === "giveaway" ? ' aria-current="page"' : ""}><i class="give-dot" aria-hidden="true"></i>Giveaway</a>` : "";
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-in">
@@ -1595,6 +1597,8 @@ ${navHTML("")}
   </div>
 </section>
 
+${giveawayOnHome() ? giveawayBlocksHTML("h2") : ""}
+
 <section class="band alt" id="story">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1664,6 +1668,7 @@ ${navHTML("")}
 
 ${footHTML("")}
 <div class="tip float-tip" id="floatTip" hidden></div>
+${giveawayOnHome() ? giveawayDialogHTML() : ""}
 <div class="toast" id="toast" role="status"><span class="ico">${ICON.check}</span>Copied <span id="toastText"></span></div>`;
 }
 
@@ -1698,12 +1703,12 @@ const FLOATERS = [
   ["spark", "#c9f5dd", 64, 88, 11, -1.7],
 ];
 
-function giveawayPageHTML() {
+// The giveaway itself: prize, how it works, the crowd. The homepage shows it after the
+// Hall of Fame (level "h2"); /giveaway/ shows it on its own (level "h1").
+function giveawayBlocksHTML(level) {
   const g = GIVEAWAY, st = giveawayState();
   const words = g.title.split(" "), last = words.pop();
-  return `
-${navHTML("../", "giveaway")}
-<main id="main" class="gv" data-state="${st}">
+  return `<div class="gv" id="giveaway" data-state="${st}">
 <section class="gv-hero" aria-labelledby="gvTitle">
   <div class="gv-sky" aria-hidden="true">
     <div class="gv-aurora"></div>
@@ -1711,7 +1716,7 @@ ${navHTML("../", "giveaway")}
   </div>
   <div class="wrap gv-in">
     <p class="gv-kicker"><i class="give-dot" aria-hidden="true"></i>${esc(g.kicker)}</p>
-    <h1 class="gv-title" id="gvTitle">${esc(words.join(" "))} <span class="rb">${esc(last)}</span></h1>
+    <${level} class="gv-title" id="gvTitle">${esc(words.join(" "))} <span class="rb">${esc(last)}</span></${level}>
     <p class="gv-intro">${esc(g.intro)}</p>
 
     <article class="prize" aria-label="The prize">
@@ -1742,7 +1747,7 @@ ${navHTML("../", "giveaway")}
   </div>
 </section>
 
-<section class="band gv-how">
+<section class="band alt gv-how">
   <div class="wrap gv-how-in">
     <div class="sec-head" style="margin:0">
       <span class="kicker">How it works</span>
@@ -1761,7 +1766,7 @@ ${navHTML("../", "giveaway")}
   </div>
 </section>
 
-<section class="band alt gv-crowd" id="crowd" aria-labelledby="crowdTitle">
+<section class="band gv-crowd" id="crowd" aria-labelledby="crowdTitle">
   <div class="wrap">
     <div class="crowd-head">
       <div class="sec-head" style="margin:0">
@@ -1778,9 +1783,11 @@ ${navHTML("../", "giveaway")}
     <button class="btn-ghost crowd-more" id="crowdMore" type="button" hidden>Show more</button>
   </div>
 </section>
-</main>
-${footHTML("../")}
-
+</div>`;
+}
+function giveawayDialogHTML() {
+  const g = GIVEAWAY;
+  return `
 <dialog class="gv-dialog" id="gvDialog" aria-labelledby="gvDialogTitle">
   <button class="gv-x" type="button" data-close aria-label="Close">${ICON.close}</button>
   <form class="gv-form" id="gvForm" novalidate>
@@ -1809,43 +1816,34 @@ ${footHTML("../")}
     <p class="meta">${esc(g.announcement)}</p>
     <div class="gv-done-actions"><a class="btn-discord" href="${DISCORD}" target="_blank" rel="noopener">${ICON.discord}Join the Discord</a><button class="btn-ghost" type="button" data-close>Done</button></div>
   </div>
-</dialog>
+</dialog>`;
+}
+// On the homepage when the build embeds it and the config has it live.
+function giveawayOnHome() { return !!(GIVEAWAY && GIVEAWAY.embed && GIVEAWAY.live && GIVEAWAY.promote); }
+
+function giveawayPageHTML() {
+  return `
+${navHTML("../", "giveaway")}
+<main id="main">
+${giveawayBlocksHTML("h1")}
+</main>
+${footHTML("../")}
+${giveawayDialogHTML()}
 <div class="toast" id="toast" role="status"><span class="ico">${ICON.check}</span>Copied <span id="toastText"></span></div>`;
 }
 
-/* Giveaway page behavior. The server decides everything that matters (whether
-   an entry is valid, duplicates, the count); this file only presents it. */
-const root = document.getElementById("root");
-if (!root.firstElementChild) root.innerHTML = giveawayPageHTML(); // the hosted build ships this markup already
+/* The giveaway: state, countdown, participants and the entry form. Runs on the
+   homepage section and on /giveaway/. The server decides everything that matters
+   (whether an entry is valid, duplicates, the count); this only presents it. */
+function initGiveaway() {
 const $ = id => document.getElementById(id);
+if (!$("gvEnter")) return;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const API = "/api/giveaway";
 const MC_RE = /^[A-Za-z0-9_]{3,16}$/, DC_RE = /^(?!.*\.\.)[a-z0-9_.]{2,32}$/;
 const head = (n, size) => `https://minotar.net/helm/${encodeURIComponent(n)}/${size}.png`;
 
-/* Shared chrome: menu, copy the address */
-function toast(text) {
-  $("toastText").textContent = text;
-  $("toast").classList.add("show");
-  clearTimeout(toast.t);
-  toast.t = setTimeout(() => $("toast").classList.remove("show"), 1800);
-}
-document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
-  const state = btn.querySelector(".state-text");
-  try { await navigator.clipboard.writeText(IP); btn.classList.add("copied"); state.textContent = "Copied"; toast(IP); }
-  catch (e) { state.textContent = "Select"; }
-  clearTimeout(btn.reset);
-  btn.reset = setTimeout(() => { btn.classList.remove("copied"); state.textContent = "Copy"; }, 2000);
-}));
-$("menuBtn").addEventListener("click", () => {
-  const open = $("sheet").hidden;
-  $("sheet").hidden = !open;
-  $("menuBtn").setAttribute("aria-expanded", open);
-  $("menuBtn").setAttribute("aria-label", open ? "Close menu" : "Open menu");
-});
-const navEl = document.querySelector(".nav");
-addEventListener("scroll", () => navEl.classList.toggle("scrolled", scrollY > 12), { passive: true });
-$("main").addEventListener("click", e => {
+$("giveaway").addEventListener("click", e => {
   const a = e.target.closest('a[href="#crowd"]');
   if (a) { e.preventDefault(); $("crowd").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }); }
 });
@@ -1861,7 +1859,7 @@ let mine = remembered();
 $("gvEnds").textContent = (state === "ended" ? "Ended " : "Ends ") + new Date(GIVEAWAY.endsAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
 
 function renderState() {
-  document.querySelector("main.gv").dataset.state = state;
+  $("giveaway").dataset.state = state;
   const btn = $("gvEnter"), text = btn.querySelector(".gv-enter-text"), ico = btn.querySelector(".ico");
   btn.classList.toggle("done", !!mine && state !== "preview");
   if (mine && state !== "preview") {
@@ -2083,6 +2081,35 @@ function confetti() {
     if (life < 1) requestAnimationFrame(frame); else c.remove();
   })(start);
 }
+}
+
+/* /giveaway/ on its own: the parts the homepage's app.js already provides there. */
+const root = document.getElementById("root");
+if (!root.firstElementChild) root.innerHTML = giveawayPageHTML(); // the hosted build ships this markup already
+const $ = id => document.getElementById(id);
+/* Shared chrome: menu, copy the address */
+function toast(text) {
+  $("toastText").textContent = text;
+  $("toast").classList.add("show");
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => $("toast").classList.remove("show"), 1800);
+}
+document.querySelectorAll("[data-copy]").forEach(btn => btn.addEventListener("click", async () => {
+  const state = btn.querySelector(".state-text");
+  try { await navigator.clipboard.writeText(IP); btn.classList.add("copied"); state.textContent = "Copied"; toast(IP); }
+  catch (e) { state.textContent = "Select"; }
+  clearTimeout(btn.reset);
+  btn.reset = setTimeout(() => { btn.classList.remove("copied"); state.textContent = "Copy"; }, 2000);
+}));
+$("menuBtn").addEventListener("click", () => {
+  const open = $("sheet").hidden;
+  $("sheet").hidden = !open;
+  $("menuBtn").setAttribute("aria-expanded", open);
+  $("menuBtn").setAttribute("aria-label", open ? "Close menu" : "Open menu");
+});
+const navEl = document.querySelector(".nav");
+addEventListener("scroll", () => navEl.classList.toggle("scrolled", scrollY > 12), { passive: true });
+initGiveaway();
 
 </script>
 </body>
