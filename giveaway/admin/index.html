@@ -664,6 +664,9 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 .nav-links a.nav-give { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .nav-links a.nav-give::after { background: linear-gradient(90deg, #ff3d8b, #ffc94d, #62e3a0, #3ab3da, #b9a3ff); }
 .nav-links a.nav-give:hover::after { transform: scaleX(1); }
+/* The one place the rainbow shows outside the giveaway: the word itself, slowly moving. */
+.give-word { font-weight: 700; background: linear-gradient(90deg, #ff5a9d, #ffc94d, #7cf0b3, #6cc8ff, #c9a2ff, #ff5a9d) 0 0 / 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (prefers-reduced-motion: no-preference) { .give-word { animation: give-flow 4s linear infinite; } @keyframes give-flow { to { background-position: 200% 0; } } }
 .sheet nav > a.nav-give { display: flex; align-items: center; gap: 12px; }
 .sheet nav > a.nav-give .give-dot { width: 11px; height: 11px; }
 .give-pill { display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px 6px 11px; border-radius: 999px; text-decoration: none; font: 600 13px var(--sans); color: var(--ink);
@@ -1170,7 +1173,7 @@ function navHTML(base, current) {
   const home = base ? base : "#top";
   const link = ([id, l], nav) => `<a href="${base}#${id}"${nav && !base ? ` data-nav="${id}"` : ""}${id === "hall" ? ' class="nav-hof"' : ""}>${id === "hall" ? ICON.crown : ""}${l}</a>`;
   const give = current === "giveaway" || (!base && giveawayPromoted())
-    ? `<a href="${current === "giveaway" ? "./" : GIVEAWAY.href}"${!base && giveawayOnHome() ? ' data-nav="giveaway"' : ""} class="nav-give${current === "giveaway" ? " on" : ""}"${current === "giveaway" ? ' aria-current="page"' : ""}><i class="give-dot" aria-hidden="true"></i>Giveaway</a>` : "";
+    ? `<a href="${current === "giveaway" ? "./" : GIVEAWAY.href}"${!base && giveawayOnHome() ? ' data-nav="giveaway"' : ""} class="nav-give${current === "giveaway" ? " on" : ""}"${current === "giveaway" ? ' aria-current="page"' : ""}><i class="give-dot" aria-hidden="true"></i><span class="give-word">Giveaway</span></a>` : "";
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-in">
