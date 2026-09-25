@@ -8,29 +8,34 @@ export default {
 
   // false: the page works as a private preview, entries are closed and the
   // homepage does not link to it. true: entries open until endsAt.
-  live: false,
+  live: true,
   // While live, link the giveaway from the homepage nav and hero.
   promote: true,
 
   kicker: "CandySim website launch",
   title: "Website Launch Giveaway",
-  intro: "The new CandySim website is live. We're celebrating with a giveaway, and one player takes the prize.",
+  intro: "The new CandySim website is live. We're celebrating with a giveaway, and two players win the Master rank.",
 
-  // PLACEHOLDERS: set the real prize before going live.
-  prize: "Prize to be announced",
-  prizeDetail: "The prize is revealed here before entries open.",
-  winners: 1,
+  prize: "Master Rank",
+  // A short line under the prize name, and a small teaser after it.
+  prizeTease: "The top rank on CandySim",
+  prizeTeaseSmall: "(for now)",
+  prizeDetail: "Two winners, and each one gets the Master rank in game, with its 4 bonus plot squares.",
+  // Optional picture shown above the prize name (pixel art is scaled up sharp).
+  prizeImage: "assets/master-tag.png",
+  prizeImageAlt: "The [MASTER] rank tag as it looks in game",
+  winners: 2,
 
   // When entries close, in UTC. Visitors see it in their own time zone.
-  endsAt: "2026-10-09T20:00:00Z",
+  endsAt: "2026-09-27T18:00:00Z",
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
     "Type your Minecraft username exactly, so the prize reaches the right account.",
     "Entries using fake names or alt accounts can be removed.",
-    "The winner is chosen by the CandySim team after entries close.",
+    "The winners are chosen by the CandySim team after entries close.",
   ],
-  announcement: "The winner will be announced in the CandySim Discord.",
+  announcement: "The winners will be announced in the CandySim Discord.",
 
   // Anti abuse. Entries allowed from one network (one IP address), so a single
   // person cannot flood the list. Households share an address, so keep this above 1.
