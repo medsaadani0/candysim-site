@@ -1,0 +1,14 @@
+# The site is static. Netlify installs package.json (for the giveaway
+# functions) and serves the rest as it is.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/giveaway/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"
