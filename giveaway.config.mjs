@@ -40,7 +40,7 @@ export default {
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: [],
+  winnerNames: ["Nervyss", "tadeus2141"],
   winnersIntro: "Entries are closed and the winners are in. Congratulations to our two new Masters!",
   winnersNote: "The winners have been announced in the CandySim Discord.",
 
