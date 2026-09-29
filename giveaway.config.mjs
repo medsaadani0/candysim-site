@@ -4,7 +4,7 @@
 // Player facing text: no hyphens or dashes (house style).
 export default {
   // Entries are stored per id. Give a new giveaway a new id to start fresh.
-  id: "website-launch-2026",
+  id: "gamepasses-oct-2026",
 
   // false: the page works as a private preview, entries are closed and the
   // homepage does not link to it. true: entries open until endsAt.
@@ -12,37 +12,40 @@ export default {
   // While live, link the giveaway from the homepage nav and hero.
   promote: true,
 
-  kicker: "CandySim website launch",
-  title: "Website Launch Giveaway",
-  intro: "The new CandySim website is live. We're celebrating with a giveaway, and two players win the Master rank.",
+  kicker: "CandySim giveaway",
+  title: "Gamepass Giveaway",
+  intro: "One player takes home every gamepass in the store. All ten, forever.",
 
-  prize: "Master Rank",
+  prize: "Every Gamepass",
   // A short line under the prize name, and a small teaser after it.
-  prizeTease: "The top rank on CandySim",
-  prizeTeaseSmall: "(for now)",
-  prizeDetail: "Two winners, and each one gets the Master rank in game, with its 4 bonus plot squares.",
+  prizeTease: "11,700 Gems of gamepasses",
+  prizeTeaseSmall: "",
+  prizeDetail: "One winner gets all 10 gamepasses from /store, unlocked permanently.",
+  // Optional list shown as chips on the prize card.
+  prizeItems: ["Auto Upgrade", "Auto Buy Machines", "Auto Merge Pets", "Auto Max Enchants", "x9 Hatching",
+    "Faster Pet Hatching", "x2 Ticket Luck", "x2 Mastery", "+2 Equip Slots", "Instant Restock"],
   // Optional picture shown above the prize name (pixel art is scaled up sharp).
-  prizeImage: "assets/master-tag.png",
-  prizeImageAlt: "The [MASTER] rank tag as it looks in game",
-  winners: 2,
+  prizeImage: "",
+  prizeImageAlt: "",
+  winners: 1,
 
   // When entries close, in UTC. Visitors see it in their own time zone.
-  endsAt: "2026-09-27T18:00:00Z",
+  endsAt: "2026-10-01T05:00:00Z",
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
     "Type your Minecraft username exactly, so the prize reaches the right account.",
     "Entries using fake names or alt accounts can be removed.",
-    "The winners are chosen by the CandySim team after entries close.",
+    "The winner is drawn at random from all entries after entries close.",
   ],
-  announcement: "The winners will be announced in the CandySim Discord.",
+  announcement: "The winner will be announced in the CandySim Discord.",
 
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: ["Nervyss", "tadeus2141"],
-  winnersIntro: "Entries are closed and the winners are in. Congratulations to our two new Masters!",
-  winnersNote: "The winners have been announced in the CandySim Discord.",
+  winnerNames: [],
+  winnersIntro: "Entries are closed and the winner is in. Congratulations!",
+  winnersNote: "The winner has been announced in the CandySim Discord.",
 
   // Anti abuse. Entries allowed from one network (one IP address), so a single
   // person cannot flood the list. Households share an address, so keep this above 1.
