@@ -4,7 +4,7 @@
 // Player facing text: no hyphens or dashes (house style).
 export default {
   // Entries are stored per id. Give a new giveaway a new id to start fresh.
-  id: "gamepasses-oct-2026",
+  id: "lucky-roll-oct-2026",
 
   // false: the page works as a private preview, entries are closed and the
   // homepage does not link to it. true: entries open until endsAt.
@@ -13,38 +13,40 @@ export default {
   promote: true,
 
   kicker: "CandySim giveaway",
-  title: "Gamepass Giveaway",
-  intro: "One player takes home every gamepass in the store. All ten, forever.",
+  title: "Lucky Roll Giveaway",
+  intro: "One winner rolls a random rank AND a random gamepass. It could be Master. It could be Auto Upgrade.",
 
-  prize: "Every Gamepass",
+  prize: "Random Rank + Random Gamepass",
   // A short line under the prize name, and a small teaser after it.
-  prizeTease: "11,700 Gems of gamepasses",
+  prizeTease: "Up to 8,800 Gems of loot",
   prizeTeaseSmall: "",
-  prizeDetail: "One winner gets all 10 gamepasses from /store, unlocked permanently.",
+  prizeDetail: "The winner rolls one rank and one gamepass, both at random, right after the draw. Every option below can come up.",
   // Optional list shown as chips on the prize card.
-  prizeItems: ["Auto Upgrade", "Auto Buy Machines", "Auto Merge Pets", "Auto Max Enchants", "x9 Hatching",
-    "Faster Pet Hatching", "x2 Ticket Luck", "x2 Mastery", "+2 Equip Slots", "Instant Restock"],
+  prizeItems: ["Baker Rank", "Chef Rank", "Pro Rank", "Master Rank", "Auto Upgrade", "Auto Buy Machines", "Auto Merge Pets", "Auto Max Enchants",
+    "x9 Hatching", "Faster Pet Hatching", "x2 Ticket Luck", "x2 Mastery", "+2 Equip Slots", "Instant Restock"],
   // Optional picture shown above the prize name (pixel art is scaled up sharp).
   prizeImage: "",
   prizeImageAlt: "",
   winners: 1,
 
   // When entries close, in UTC. Visitors see it in their own time zone.
-  endsAt: "2026-10-01T05:00:00Z",
+  endsAt: "2026-10-05T18:00:00Z",
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
     "Type your Minecraft username exactly, so the prize reaches the right account.",
     "Entries using fake names or alt accounts can be removed.",
-    "The winner is drawn at random from all entries after entries close.",
+    "The winner is drawn at random from all entries after entries close, then the rank and gamepass are rolled.",
   ],
-  announcement: "The winner will be announced in the CandySim Discord.",
+  announcement: "The winner and what they rolled will be announced in the CandySim Discord.",
 
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: ["SnowFR_"],
-  winnersIntro: "Entries are closed and the winner is in. Congratulations!",
+  winnerNames: [],
+  // Optional, one per winner: what that winner got, shown on their card instead of the prize name.
+  winnerPrizes: [],
+  winnersIntro: "Entries are closed, the winner is in and the dice have rolled. Congratulations!",
   winnersNote: "The winner has been announced in the CandySim Discord.",
 
   // Anti abuse. Entries allowed from one network (one IP address), so a single
