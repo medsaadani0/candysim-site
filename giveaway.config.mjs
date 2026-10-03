@@ -20,7 +20,7 @@ export default {
   // A short line under the prize name, and a small teaser after it.
   prizeTease: "Up to 8,800 Gems of loot",
   prizeTeaseSmall: "",
-  prizeDetail: "The winner rolls one rank and one gamepass, both at random, right after the draw. Every option below can come up.",
+  prizeDetail: "The winner rolls one rank and one gamepass at random, live in a call with the CandySim team. Every option below can come up.",
   // Optional list shown as chips on the prize card.
   prizeItems: ["Baker Rank", "Chef Rank", "Pro Rank", "Master Rank", "Auto Upgrade", "Auto Buy Machines", "Auto Merge Pets", "Auto Max Enchants",
     "x9 Hatching", "Faster Pet Hatching", "x2 Ticket Luck", "x2 Mastery", "+2 Equip Slots", "Instant Restock"],
@@ -34,9 +34,9 @@ export default {
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
-    "Type your Minecraft username exactly, so the prize reaches the right account.",
+    "Type your Minecraft username exactly, so the prize reaches the right account. Prizes are given out on the Season 3 release.",
     "Entries using fake names or alt accounts can be removed.",
-    "The winner is drawn at random from all entries after entries close, then the rank and gamepass are rolled.",
+    "The winner is drawn at random from all entries after entries close. Their rank and gamepass are rolled in a call with them.",
   ],
   announcement: "The winner and what they rolled will be announced in the CandySim Discord.",
 
