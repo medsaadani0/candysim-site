@@ -18,7 +18,7 @@ export default {
 
   prize: "Random Rank + Random Gamepass",
   // A short line under the prize name, and a small teaser after it.
-  prizeTease: "Up to 8,800 Gems of loot",
+  prizeTease: "Up to 8,800 Gems of rewards",
   prizeTeaseSmall: "",
   prizeDetail: "The winner rolls one rank and one gamepass at random, live in a call with the CandySim team. Every option below can come up.",
   // Optional list shown as chips on the prize card.
