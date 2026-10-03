@@ -30,7 +30,7 @@ export default {
   winners: 1,
 
   // When entries close, in UTC. Visitors see it in their own time zone.
-  endsAt: "2026-10-05T18:00:00Z",
+  endsAt: "2026-10-05T05:00:00Z",
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
