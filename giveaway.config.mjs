@@ -43,10 +43,10 @@ export default {
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: [],
+  winnerNames: ["TheFixItFelixMC"],
   // Optional, one per winner: what that winner got, shown on their card instead of the prize name.
   winnerPrizes: [],
-  winnersIntro: "Entries are closed, the winner is in and the dice have rolled. Congratulations!",
+  winnersIntro: "Entries are closed and the winner is in! Their rank and gamepass get rolled live in a call with the CandySim team. Congratulations!",
   winnersNote: "The winner has been announced in the CandySim Discord.",
 
   // Anti abuse. Entries allowed from one network (one IP address), so a single
