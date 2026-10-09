@@ -989,13 +989,13 @@ const RANK_SQUARES = [["Baker", 1], ["Chef", 2], ["Pro", 3], ["Master", 4]];
 // Store ranks (store.sk getRankItem, rankFullPrice, upgrade prices; ranksperms.sk). Bought with Gems in /store.
 // Universal Multi as the /store item shows it (getRankMulti in utils.sk returns 2.10 for Master).
 const RANKS = [
-  { name: "Baker", tag: "BAKER", color: "#FF8000", dark: "#B35900", multi: "1.25", pets: "1.5", squares: 1, hoe: 10, daily: 15, buyAll: false,
+  { name: "Baker", tag: "BAKER", color: "#FF8000", dark: "#B35900", multi: "1.25", pets: "1.5", squares: 1, hoe: 4, aquarium: 1, daily: 15, buyAll: false,
     cmds: ["/hat", "/ec", "/sit"], price: 600, bundle: 850 },
-  { name: "Chef", tag: "CHEF", color: "#00FFFF", dark: "#009999", multi: "1.5", pets: "2", squares: 2, hoe: 20, daily: 25, buyAll: false,
+  { name: "Chef", tag: "CHEF", color: "#00FFFF", dark: "#009999", multi: "1.5", pets: "2", squares: 2, hoe: 8, aquarium: 2, daily: 25, buyAll: false,
     cmds: ["/nick", "/lay"], price: 1400, upgrade: 800, bundle: 1780 },
-  { name: "Pro", tag: "PRO", color: "#FF0088", dark: "#B3005F", multi: "1.75", pets: "2.5", squares: 3, hoe: 30, daily: 40, buyAll: true,
+  { name: "Pro", tag: "PRO", color: "#FF0088", dark: "#B3005F", multi: "1.75", pets: "2.5", squares: 3, hoe: 11, aquarium: 3, daily: 40, buyAll: true,
     cmds: ["/fly", "/crawl", "/glow"], price: 3200, upgrade: 1800, bundle: 3640 },
-  { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.15", pets: "3", squares: 4, hoe: 40, daily: 60, buyAll: true,
+  { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.15", pets: "3", squares: 4, hoe: 15, aquarium: 5, daily: 60, buyAll: true,
     cmds: ["/spin"], price: 7000, upgrade: 3800, bundle: 6720 },
 ];
 // Stove head skins by tier bracket (factoryCoreHeadTexture, machine.sk).
@@ -1402,7 +1402,7 @@ ${navHTML("")}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="kicker">Ways to earn</span>
-      <h2>Farm for Tokens. Mine for artifacts.</h2>
+      <h2>Farm for Tokens. Mine for the Forge.</h2>
     </div>
     <div class="earn">
       <article class="reveal">
@@ -1417,7 +1417,7 @@ ${navHTML("")}
       </article>
       <article class="reveal">
         <h3>The Mine <code class="cmd">/mine</code></h3>
-        <p>Opens at Prestige 100. ${ORES.length} ores, from ${ORES[0][0]} to ${ORES[ORES.length - 1][0]}, pay money, Tokens and XP. The real prize is 84 artifacts you keep forever.</p>
+        <p>Opens at Prestige 100. ${ORES.length} ores, from ${ORES[0][0]} to ${ORES[ORES.length - 1][0]}, drop Forge components and Golden Tickets. Forge components into Machine Parts and install them to boost your machines.</p>
       </article>
     </div>
   </div>
@@ -1486,6 +1486,7 @@ ${navHTML("")}
         <li><span>Bonus plot squares</span><b>+${r.squares}</b></li>
         <li><span>Pet storage</span><b>x${r.pets}</b></li>
         <li><span>Hoe enchant discount</span><b>${r.hoe}%</b></li>
+        <li><span>Aquarium slots</span><b>+${r.aquarium}</b></li>
         <li><span><code class="cmd">/daily</code> Gems</span><b>+${r.daily}%</b></li>
         <li><span>Shop Buy All</span><b>${r.buyAll ? ICON.check : '<em aria-label="No">·</em>'}</b></li>
       </ul>
