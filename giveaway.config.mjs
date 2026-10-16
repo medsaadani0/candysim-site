@@ -4,7 +4,7 @@
 // Player facing text: no hyphens or dashes (house style).
 export default {
   // Entries are stored per id. Give a new giveaway a new id to start fresh.
-  id: "aquarium-slots-oct-2026",
+  id: "nitro-oct-2026",
 
   // false: the page works as a private preview, entries are closed and the
   // homepage does not link to it. true: entries open until endsAt.
@@ -13,14 +13,14 @@ export default {
   promote: true,
 
   kicker: "CandySim giveaway",
-  title: "Aquarium Giveaway",
-  intro: "The newest gamepass is up for grabs. One winner gets +2 Aquarium Slots, room for 2 more fish, forever.",
+  title: "Nitro Giveaway",
+  intro: "One winner gets $3 of Discord Nitro, sent straight to their Discord.",
 
-  prize: "+2 Aquarium Slots",
+  prize: "$3 Discord Nitro",
   // A short line under the prize name, and a small teaser after it.
-  prizeTease: "The newest gamepass, worth 1,200 Gems",
+  prizeTease: "Sent to the winner on Discord",
   prizeTeaseSmall: "",
-  prizeDetail: "A permanent gamepass: your aquarium gets 2 extra slots on top of the normal 10, so you can keep 2 more fish.",
+  prizeDetail: "Enter with your Minecraft and Discord usernames. The winner gets the Nitro on the Discord account they entered with.",
   // Optional list shown as chips on the prize card.
   prizeItems: [],
   // Optional picture shown above the prize name (pixel art is scaled up sharp).
@@ -29,11 +29,11 @@ export default {
   winners: 1,
 
   // When entries close, in UTC. Visitors see it in their own time zone.
-  endsAt: "2026-10-11T06:00:00Z",
+  endsAt: "2026-10-18T14:00:00Z",
 
   rules: [
     "One entry per Minecraft account and per Discord account.",
-    "Type your Minecraft username exactly, so the prize reaches the right account. Prizes are given out on the Season 3 release.",
+    "Type your Discord username exactly, the Nitro is sent to that account.",
     "Entries using fake names or alt accounts can be removed.",
     "The winner is drawn at random from all entries after entries close.",
   ],
@@ -42,7 +42,7 @@ export default {
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: ["legoman3000"],
+  winnerNames: [],
   // Optional, one per winner: what that winner got, shown on their card instead of the prize name.
   winnerPrizes: [],
   winnersIntro: "Entries are closed and the winner is in. Congratulations!",
