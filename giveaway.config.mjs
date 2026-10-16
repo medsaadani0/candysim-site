@@ -12,6 +12,9 @@ export default {
   // While live, link the giveaway from the homepage nav and hero.
   promote: true,
 
+  // Optional look: "discord" swaps the rainbow for Discord blurple and Nitro pink.
+  theme: "discord",
+
   kicker: "CandySim giveaway",
   title: "Nitro Giveaway",
   intro: "One winner gets $3 of Discord Nitro, sent straight to their Discord.",
