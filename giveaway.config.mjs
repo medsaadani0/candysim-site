@@ -45,7 +45,7 @@ export default {
   // After entries close: the Minecraft names of the winners, exactly as they
   // entered. Once filled in, the prize card shows them and the intro and note
   // below switch to the texts here. Leave empty until you have picked them.
-  winnerNames: ["granndpa"],
+  winnerNames: ["optious"],
   // Optional, one per winner: what that winner got, shown on their card instead of the prize name.
   winnerPrizes: [],
   winnersIntro: "Entries are closed and the winner is in. Congratulations!",
