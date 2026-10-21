@@ -10,7 +10,7 @@ export default {
   // homepage does not link to it. true: entries open until endsAt.
   live: true,
   // While live, link the giveaway from the homepage nav and hero.
-  promote: true,
+  promote: false,
 
   // Optional look: "discord" swaps the rainbow for Discord blurple and Nitro pink.
   theme: "discord",
