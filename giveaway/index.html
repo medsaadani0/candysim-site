@@ -802,6 +802,23 @@ html[data-theme="halloween"] .hw-only { display: grid; }
 html[data-theme="halloween"] .logo .logo-hw { display: block; }
 html[data-theme="halloween"] .logo:has(.logo-hw) .logo-std { display: none; }
 
+/* Season 3 countdown */
+.cd { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 22px; }
+.cd-label { font: 600 12.5px var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
+.cd-time { display: flex; gap: 8px; }
+.cd-seg { display: grid; justify-items: center; min-width: 58px; padding: 8px 6px 6px; border-radius: 12px; background: rgba(var(--pink-rgb), 0.08); border: 1px solid rgba(var(--pink-rgb), 0.28); }
+.cd-seg b { font: 800 26px/1 var(--display); font-variant-numeric: tabular-nums; color: var(--ink); }
+.cd-seg i { font: 500 10.5px var(--mono); font-style: normal; color: var(--dim); margin-top: 3px; text-transform: uppercase; }
+.cd-done { display: none; font: 700 16px var(--display); color: var(--ink); }
+.cd-done b { color: var(--pink); letter-spacing: 0.04em; }
+.cd.is-out .cd-label, .cd.is-out .cd-time { display: none; }
+.cd.is-out .cd-done { display: inline; }
+.cd-small { margin: 4px 0 16px; gap: 8px; }
+.cd-small .cd-label { width: 100%; }
+.cd-small .cd-seg { min-width: 46px; padding: 6px 4px 5px; }
+.cd-small .cd-seg b { font-size: 20px; }
+@media (max-width: 520px) { .cd-seg { min-width: 0; flex: 1; } .cd-time { width: 100%; } }
+
 /* The launch giveaway. Same dark CandySim world, with the rainbow kept to this
    page: one slow aurora behind the prize, an iridescent prize border, a few
    pixel candies. Everything decorative stops under reduced motion. */
@@ -1235,6 +1252,7 @@ html[data-theme="halloween"] .logo:has(.logo-hw) .logo-std { display: none; }
 <script>
 /* Everything on this page comes from the CandySim Skript source.
    File references are noted so the numbers can be rechecked when the server changes. */
+const RELEASE = Date.UTC(2026, 9, 23, 17, 0, 0);       // Season 3: Fri Oct 23, 18:00 Tunisia = 1 PM EDT
 const IP = "CandySim.minehut.gg";                       // discord.sk, embeds
 const DISCORD = "https://discord.gg/3cs4sATTy6";        // discord.sk
 const STORE = "https://candysim.tebex.io";              // messages.sk, store.sk
@@ -1518,6 +1536,10 @@ const ASSETS = JSON.parse(document.querySelector("script#assets").textContent); 
 if (ASSETS.banner) document.documentElement.style.setProperty("--banner", `url(${ASSETS.banner})`);
 if (ASSETS.grain) document.documentElement.style.setProperty("--grain", `url(${ASSETS.grain})`);
 
+function countdown(extra = "") {
+  const seg = (k, l) => `<span class="cd-seg"><b data-cd-${k}>00</b><i>${l}</i></span>`;
+  return `<div class="cd ${extra}" data-cd><span class="cd-label">Season 3 releases in</span><span class="cd-time">${seg("d", "days")}${seg("h", "hrs")}${seg("m", "min")}${seg("s", "sec")}</span><span class="cd-done">Season 3 is <b>RELEASED</b> · join now</span></div>`;
+}
 function ipButton(extra = "", label = "") {
   return `<button class="ip ${extra}" data-copy aria-label="Copy the server address ${IP}">${label ? `<span class="ip-label">${label}</span>` : `<code>${IP}</code>`}<span class="state"><span class="ico ico-copy">${ICON.copy}</span><span class="ico ico-check">${ICON.check}</span><span class="state-text">Copy</span></span></button>`;
 }
@@ -1630,6 +1652,7 @@ ${navHTML("")}
       <p class="hero-line">Fill your plot. Sell the candy. <span class="accent">Prestige.</span></p>
       <p class="lede">Unseal candy machines, place up to 25 on your plot, and they sell every three seconds while you farm, mine and climb all the way to Rebirth 100.</p>
       <div class="hero-actions">${ipButton("big")}<a class="btn-ghost" href="#loop">How it works <span class="ico">${ICON.down}</span></a></div>
+      ${countdown("cd-hero")}
     </div>
   </div>
   <p class="hero-note" id="heroNote">A full plot: 25 machines, Tiers 1 to 25. Hover one.</p>
@@ -1907,8 +1930,9 @@ ${giveawayOnHome() ? giveawayBlocksHTML("h2") : ""}
         <ul>${e.events.map(([d, t, major]) => `<li class="${major ? "major" : ""}"><time>${d}</time><span>${t}</span></li>`).join("")}</ul>
       </li>`).join("")}
       <li class="era era-now" style="--i:3">
-        <div class="era-head"><b>Season 3</b><span>Coming soon</span></div>
-        <p>The release date is announced soon. Join the Discord so you don't miss it.</p>
+        <div class="era-head"><b>Season 3</b><span data-cd-when>Fri Oct 23 · 1:00 PM ET</span></div>
+        <p>Releases Friday, October 23 at 1:00 PM Eastern (6:00 PM Tunisia). 20,000 Tiers, Rebirth 100, the Pond, Hoe Abilities, the Mayor and a Halloween event.</p>
+        ${countdown("cd-small")}
         <a class="btn-discord small" href="${DISCORD}" target="_blank" rel="noopener">${ICON.discord}Join the Discord</a>
       </li>
     </ol>
