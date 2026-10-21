@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <script>if(location.hostname.endsWith("github.io"))location.replace("https://candysim.xyz"+location.pathname.replace(/^\/candysim-site/,"")+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(){var d=document.documentElement,k="cs-theme";function g(){try{return localStorage.getItem(k)}catch(e){return null}}function set(on){d.dataset.theme=on?"halloween":"classic";document.querySelectorAll(".js-theme").forEach(function(b){b.setAttribute("aria-pressed",on)})}set(g()!=="classic");document.addEventListener("DOMContentLoaded",function(){set(d.dataset.theme==="halloween")});document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".js-theme"))return;var on=d.dataset.theme!=="halloween";set(on);try{localStorage.setItem(k,on?"halloween":"classic")}catch(x){}})})();</script>
 <title>Nitro Giveaway · CandySim</title>
 <meta name="description" content="One winner gets $3 of Discord Nitro, sent straight to their Discord.">
 <link rel="canonical" href="https://candysim.xyz/giveaway/">
@@ -43,6 +44,8 @@
   --pink: #ff3d8b;
   --pink-deep: #d91e6c;
   --pink-soft: #ffb3cf;
+  --pink-rgb: 255, 61, 139;
+  --bg-rgb: 18, 14, 13;
   --gold: #ffc94d;
   --mint: #62e3a0;
   --discord: #5865f2;
@@ -73,7 +76,7 @@ p { margin: 0; }
 button, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--pink-soft); outline-offset: 3px; border-radius: 4px; }
-::selection { background: rgba(255, 61, 139, 0.4); color: #fff; }
+::selection { background: rgba(var(--pink-rgb), 0.4); color: #fff; }
 .wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
 .skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: var(--r-sm); font-weight: 700; text-decoration: none; }
 .skip:focus { top: 12px; }
@@ -100,8 +103,8 @@ code.cmd { font: 500 0.84em var(--mono); color: var(--ink); background: rgba(255
 }
 
 /* Navigation */
-.nav { position: sticky; top: 0; z-index: 20; background: rgba(18, 14, 13, 0.92); border-bottom: 1px solid transparent; padding-top: env(safe-area-inset-top, 0px); transition: border-color 0.3s, background 0.3s; }
-.nav.scrolled { background: rgba(18, 14, 13, 0.97); border-color: var(--line); }
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(var(--bg-rgb), 0.92); border-bottom: 1px solid transparent; padding-top: env(safe-area-inset-top, 0px); transition: border-color 0.3s, background 0.3s; }
+.nav.scrolled { background: rgba(var(--bg-rgb), 0.97); border-color: var(--line); }
 .nav-in { display: flex; align-items: center; gap: 32px; height: 68px; }
 .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 23px; }
 .logo img { width: 32px; height: 32px; border-radius: 9px; display: block; }
@@ -159,7 +162,7 @@ code.cmd { font: 500 0.84em var(--mono); color: var(--ink); background: rgba(255
 
 /* Hero */
 .hero { position: relative; min-height: min(860px, calc(100svh - 68px)); display: grid; overflow: hidden; isolation: isolate;
-  background: radial-gradient(55% 60% at 74% 56%, rgba(255, 61, 139, 0.13), transparent 70%), radial-gradient(40% 40% at 88% 18%, rgba(255, 201, 77, 0.06), transparent 70%), var(--bg); }
+  background: radial-gradient(55% 60% at 74% 56%, rgba(var(--pink-rgb), 0.13), transparent 70%), radial-gradient(40% 40% at 88% 18%, rgba(255, 201, 77, 0.06), transparent 70%), var(--bg); }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--grain); opacity: 0.05; pointer-events: none; }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 0.9s var(--ease); }
 .hero canvas.ready { opacity: 1; }
@@ -229,7 +232,7 @@ section.band { padding-block: clamp(88px, 11vw, 150px); position: relative; }
 .grid .sq:hover { transform: scale(1.06); }
 .sq.prestige { background: repeating-conic-gradient(#ece6e2 0% 25%, #2b2324 0% 50%) 0 0 / 50% 50%; opacity: 0.9; }
 .sq.rank { background: var(--gold); box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.12); }
-.sq.start { background: var(--pink); box-shadow: 0 0 0 3px rgba(255, 61, 139, 0.3); }
+.sq.start { background: var(--pink); box-shadow: 0 0 0 3px rgba(var(--pink-rgb), 0.3); }
 .legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; color: var(--muted); font-size: 14px; }
 .legend li { display: flex; align-items: center; gap: 8px; }
 .legend .sq { width: 14px; height: 14px; border-radius: 4px; }
@@ -255,10 +258,10 @@ section.band { padding-block: clamp(88px, 11vw, 150px); position: relative; }
 .field label { font: 600 13px var(--sans); color: var(--muted); }
 .tier-row { display: flex; gap: 12px; align-items: center; }
 input[type="range"] { flex: 1; min-width: 0; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--pink) var(--fill, 0%), var(--surface-2) var(--fill, 0%)); }
-input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 0; box-shadow: 0 0 0 4px rgba(255, 61, 139, 0.35); cursor: grab; }
-input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 0; box-shadow: 0 0 0 4px rgba(255, 61, 139, 0.35); cursor: grab; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 0; box-shadow: 0 0 0 4px rgba(var(--pink-rgb), 0.35); cursor: grab; }
+input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 0; box-shadow: 0 0 0 4px rgba(var(--pink-rgb), 0.35); cursor: grab; }
 input[type="number"], input[type="search"] { background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px; color: var(--ink); font: 500 15px var(--mono); padding: 10px 13px; min-width: 0; transition: border-color 0.2s, box-shadow 0.2s; }
-input[type="number"]:focus, input[type="search"]:focus { border-color: var(--pink-soft); box-shadow: 0 0 0 3px rgba(255, 61, 139, 0.2); outline: none; }
+input[type="number"]:focus, input[type="search"]:focus { border-color: var(--pink-soft); box-shadow: 0 0 0 3px rgba(var(--pink-rgb), 0.2); outline: none; }
 input[type="number"] { width: 108px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { background: none; border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 13px; font-size: 13px; font-weight: 600; color: var(--muted); transition: border-color 0.2s, color 0.2s, background 0.2s; }
@@ -306,7 +309,7 @@ input[type="number"] { width: 108px; }
 /* Progression */
 .cycle { list-style: none; margin: 0 0 72px; padding: 0 0 36px; display: grid; grid-template-columns: repeat(5, 1fr); position: relative; counter-reset: c; }
 .cycle::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px; background: var(--line-2); }
-.cycle::after { content: "and again, up to Rebirth 50"; position: absolute; left: 10%; right: 10%; bottom: 0; height: 24px; border: 2px dashed var(--line-2); border-top: 0; border-radius: 0 0 22px 22px; font: 500 12px/24px var(--mono); color: var(--dim); text-align: center; }
+.cycle::after { content: "and again, up to Rebirth 100"; position: absolute; left: 10%; right: 10%; bottom: 0; height: 24px; border: 2px dashed var(--line-2); border-top: 0; border-radius: 0 0 22px 22px; font: 500 12px/24px var(--mono); color: var(--dim); text-align: center; }
 .cycle li { position: relative; padding: 32px 18px 0 0; display: grid; gap: 6px; align-content: start; }
 .cycle li::before { content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); }
 .cycle li:nth-child(2)::before, .cycle li:nth-child(4)::before { border-color: var(--pink); background: var(--pink); }
@@ -436,7 +439,7 @@ input[type="number"] { width: 108px; }
 @media (max-width: 640px) { .profile-grid { grid-template-columns: 1fr 1fr; } .profile-grid div, .profile-id { padding-inline: 16px; } .profile-head { grid-template-columns: 1fr; } }
 
 /* Join */
-.join-band { background: radial-gradient(60% 70% at 80% 50%, rgba(255, 61, 139, 0.1), transparent 70%), var(--bg); }
+.join-band { background: radial-gradient(60% 70% at 80% 50%, rgba(var(--pink-rgb), 0.1), transparent 70%), var(--bg); }
 .join { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 88px); align-items: center; }
 @media (max-width: 900px) { .join { grid-template-columns: 1fr; } }
 .join-copy { display: grid; gap: 20px; justify-items: start; }
@@ -496,7 +499,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 .era ul li.major { color: var(--ink); font-weight: 700; font-size: 16px; }
 .era ul li.major::before { left: -19px; top: 6px; width: 9px; height: 9px; background: var(--pink); border-color: var(--pink); }
 .era ul li.major time { color: var(--pink-soft); }
-.era-now::before { background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 5px rgba(255, 61, 139, 0.16); }
+.era-now::before { background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 5px rgba(var(--pink-rgb), 0.16); }
 .era-now { display: grid; align-content: start; gap: 14px; justify-items: start; }
 .era-now .era-head { margin-bottom: 0; }
 .era-now p { color: var(--muted); font-size: 14.5px; margin: 0; max-width: 30ch; }
@@ -720,6 +723,49 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 .ranks-foot .btn-ghost svg { width: 18px; height: 18px; }
 @media (max-width: 1080px) { .ranks { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
 @media (max-width: 560px) { .ranks { grid-template-columns: 1fr; } .rank-multi b { font-size: 40px; } }
+
+/* Halloween theme (on by default during the event; the pumpkin button in the
+   nav switches it off, remembered per browser). Pumpkin orange replaces the
+   pink, the chocolate turns night purple, and the hero gets a moon and bats. */
+html[data-theme="halloween"] {
+  --bg: #0e0a12;
+  --bg-2: #140e19;
+  --surface: #1c1524;
+  --surface-2: #261c30;
+  --line: rgba(236, 224, 255, 0.09);
+  --line-2: rgba(236, 224, 255, 0.17);
+  --ink: #f6efe6;
+  --muted: #bcaec6;
+  --dim: #877b92;
+  --cream: #f4e4cf;
+  --cream-2: #ead5b9;
+  --cream-ink: #1c1222;
+  --cream-muted: #6a5560;
+  --pink: #ff7a1a;
+  --pink-deep: #e05700;
+  --pink-soft: #ffc28f;
+  --pink-rgb: 255, 122, 26;
+  --bg-rgb: 14, 10, 18;
+  --gold: #ffd34d;
+  --mint: #9be15d;
+}
+html[data-theme="halloween"] .hero { background: radial-gradient(55% 60% at 74% 56%, rgba(255, 122, 26, 0.14), transparent 70%), radial-gradient(60% 50% at 20% 100%, rgba(140, 70, 220, 0.16), transparent 70%), var(--bg); }
+.hw-deco { display: none; }
+html[data-theme="halloween"] .hw-deco { display: block; position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.hw-moon { position: absolute; right: 7%; top: 9%; width: clamp(70px, 9vw, 120px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 36% 34%, #fff8e6, #ffe2a6 55%, #f2b866); box-shadow: 0 0 40px 10px rgba(255, 196, 110, 0.25), 0 0 120px 40px rgba(255, 140, 40, 0.12); opacity: 0.9; }
+.hw-moon::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 62% 60%, rgba(190, 120, 60, 0.35) 0 9%, transparent 10%), radial-gradient(circle at 38% 68%, rgba(190, 120, 60, 0.28) 0 6%, transparent 7%), radial-gradient(circle at 70% 32%, rgba(190, 120, 60, 0.25) 0 5%, transparent 6%); }
+.hw-fog { position: absolute; left: -10%; right: -10%; bottom: -40px; height: 220px; background: radial-gradient(50% 60% at 30% 70%, rgba(160, 120, 210, 0.16), transparent 70%), radial-gradient(45% 60% at 75% 80%, rgba(160, 120, 210, 0.12), transparent 70%); animation: hw-fog 18s ease-in-out infinite alternate; }
+@keyframes hw-fog { to { transform: translateX(6%); } }
+.hw-bat { position: absolute; width: 34px; color: #07050a; filter: drop-shadow(0 0 6px rgba(255, 140, 40, 0.25)); animation: hw-fly var(--d, 22s) linear infinite; animation-delay: var(--w, 0s); offset-rotate: 0deg; }
+.hw-bat svg { display: block; width: 100%; animation: hw-flap 0.32s ease-in-out infinite alternate; transform-origin: 50% 60%; }
+@keyframes hw-flap { to { transform: scaleY(0.45); } }
+@keyframes hw-fly { from { transform: translate(-10vw, 0); } 25% { transform: translate(25vw, -30px); } 50% { transform: translate(55vw, 20px); } 75% { transform: translate(85vw, -20px); } to { transform: translate(115vw, 10px); } }
+.hw-pill { display: none; }
+html[data-theme="halloween"] .hw-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255, 122, 26, 0.45); background: rgba(255, 122, 26, 0.1); color: #ffc28f; font: 600 13px/1 var(--sans); }
+.theme-btn svg { width: 21px; height: 21px; }
+.theme-btn[aria-pressed="true"] { color: #ff8a2a; border-color: rgba(255, 122, 26, 0.5); background: rgba(255, 122, 26, 0.1); }
+@media (prefers-reduced-motion: reduce) { .hw-bat, .hw-bat svg, .hw-fog { animation: none; } .hw-bat { display: none; } }
 
 /* The launch giveaway. Same dark CandySim world, with the rainbow kept to this
    page: one slow aurora behind the prize, an iridescent prize border, a few
@@ -1002,6 +1048,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
     <div class="nav-ext">
       <a class="icon-btn" href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener" aria-label="Discord" data-tip="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg></a>
       <a class="icon-btn" href="https://candysim.tebex.io" target="_blank" rel="noopener" aria-label="Store" data-tip="Store"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a>
+      <button class="icon-btn theme-btn js-theme" type="button" aria-pressed="true" aria-label="Halloween theme" data-tip="Halloween theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.2c-1.3-.9-3-1.2-4.6-.8C4.5 7.2 3 10.2 3 13.6 3 17.2 5 20 8 20c1.5 0 2.6-.6 4-.6s2.5.6 4 .6c3 0 5-2.8 5-6.4 0-3.4-1.5-6.4-4.4-7.2-1.6-.4-3.3-.1-4.6.8Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7c0-2 .9-3.4 2.6-4"/><path fill="#0e0a12" d="m8 11.5 1.6 2.2H6.4Zm8 0 1.6 2.2h-3.2ZM8 16.2l1.3.8 1.3-.8 1.4.8 1.4-.8 1.3.8 1.3-.8-.4 1.6H8.4Z"/></svg></button>
       <button class="ip small" data-copy aria-label="Copy the server address CandySim.minehut.gg"><span class="ip-label">Play now</span><span class="state"><span class="ico ico-copy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="ico ico-check"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="state-text">Copy</span></span></button>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
@@ -1009,7 +1056,7 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
   <div class="sheet" id="sheet" hidden>
     <nav class="wrap" aria-label="Menu">
       <a href="./" class="nav-give on" aria-current="page"><i class="give-dot" aria-hidden="true"></i><span class="give-word">Giveaway</span></a><a href="../#plot">Plot</a><a href="../#machines">Machines</a><a href="../#progression">Progression</a><a href="../#leaderboards">Leaderboards</a><a href="../#players">Players</a><a href="../#hall" class="nav-hof"><svg class="crown" viewBox="0 0 24 18" aria-hidden="true"><path d="M2.2 5.6 7.4 10l4.6-8 4.6 8 5.2-4.4-2 10.2H4.2z" fill="#ffc94d" stroke="#b9831c" stroke-width="1.2" stroke-linejoin="round"/><rect x="4.2" y="15" width="15.6" height="2.2" rx="1" fill="#e9ab2e"/><circle cx="12" cy="2" r="1.5" fill="#fff1c7"/><circle cx="2.2" cy="5.6" r="1.3" fill="#fff1c7"/><circle cx="21.8" cy="5.6" r="1.3" fill="#fff1c7"/></svg>Hall of Fame</a><a href="../#ranks">Ranks</a><a href="../#story">Our story</a><a href="../#team">The team</a><a href="../#join">How to join</a>
-      <div class="sheet-foot"><button class="ip " data-copy aria-label="Copy the server address CandySim.minehut.gg"><code>CandySim.minehut.gg</code><span class="state"><span class="ico ico-copy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="ico ico-check"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="state-text">Copy</span></span></button><div class="sheet-icons"><a class="icon-btn" href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener" aria-label="Discord" data-tip="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg></a><a class="icon-btn" href="https://candysim.tebex.io" target="_blank" rel="noopener" aria-label="Store" data-tip="Store"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a></div></div>
+      <div class="sheet-foot"><button class="ip " data-copy aria-label="Copy the server address CandySim.minehut.gg"><code>CandySim.minehut.gg</code><span class="state"><span class="ico ico-copy"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="ico ico-check"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="state-text">Copy</span></span></button><div class="sheet-icons"><a class="icon-btn" href="https://discord.gg/3cs4sATTy6" target="_blank" rel="noopener" aria-label="Discord" data-tip="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg></a><a class="icon-btn" href="https://candysim.tebex.io" target="_blank" rel="noopener" aria-label="Store" data-tip="Store"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></a><button class="icon-btn theme-btn js-theme" type="button" aria-pressed="true" aria-label="Halloween theme" data-tip="Halloween theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.2c-1.3-.9-3-1.2-4.6-.8C4.5 7.2 3 10.2 3 13.6 3 17.2 5 20 8 20c1.5 0 2.6-.6 4-.6s2.5.6 4 .6c3 0 5-2.8 5-6.4 0-3.4-1.5-6.4-4.4-7.2-1.6-.4-3.3-.1-4.6.8Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7c0-2 .9-3.4 2.6-4"/><path fill="#0e0a12" d="m8 11.5 1.6 2.2H6.4Zm8 0 1.6 2.2h-3.2ZM8 16.2l1.3.8 1.3-.8 1.4.8 1.4-.8 1.3.8 1.3-.8-.4 1.6H8.4Z"/></svg></button></div></div>
     </nav>
   </div>
 </header>
@@ -1160,7 +1207,7 @@ const STORE = "https://candysim.tebex.io";              // messages.sk, store.sk
 const GIVEAWAY = (() => { try { return JSON.parse(document.querySelector("script#giveaway").textContent); } catch (e) { return null; } })();
 
 const MACHINES = JSON.parse(document.querySelector("script#machines").textContent); // utils.sk getGenNameStrBase / getFactoryBlock
-const MAX_TIER = 15000;                                 // utils.sk maxMachineTier
+const MAX_TIER = 20000;                                 // utils.sk maxMachineTier
 const NAME_CYCLE = 650;                                 // utils.sk getGenNameStr
 
 const GLASS = {
@@ -1217,7 +1264,7 @@ const ENCHANTS = ["Harvest", "Scholar", "Growth", "Fortune", "Genius", "Bounty",
   "Payday", "Flashback", "Double Crop", "Triple Crop", "Cultivator", "Fragment Bundles", "Blessings",
   "Armor Expert", "Candy Rain"];                         // farm.sk enchant names
 const BOSS = ["Boss Damage", "Boss Fortune", "Boss Luck", "Boss Money", "Boss Pierce", "Boss Tokens", "Boss XP"]; // boss.sk
-const TREE_BRANCHES = ["Money", "Tickets", "Upgrade Discount"]; // arebirthtree.sk, 8 nodes each, 10 points to max one
+const TREE_BRANCHES = ["Money", "Tickets", "Upgrade Discount", "Tokens", "XP"]; // arebirthtree.sk, 5 branches, every node 2 levels, 100 points maxes it
 // pets.sk rarity names and colors
 const PET_RARITIES = [["Common", "#AAAAAA"], ["Uncommon", "#55FF55"], ["Rare", "#5555FF"], ["Legendary", "#FFAA00"],
   ["Mythic", "#FF55FF"], ["Celestial", "#55FFFF"], ["Divine", "#FFD700"], ["Ethereal", "#8A2BE2"],
@@ -1289,6 +1336,8 @@ function titleCase(s) { return s.replace(/\b\w/g, c => c.toUpperCase()); }
 
 // Icons, drawn inline so they stay crisp and follow the text color.
 const ICON = {
+  pumpkin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.2c-1.3-.9-3-1.2-4.6-.8C4.5 7.2 3 10.2 3 13.6 3 17.2 5 20 8 20c1.5 0 2.6-.6 4-.6s2.5.6 4 .6c3 0 5-2.8 5-6.4 0-3.4-1.5-6.4-4.4-7.2-1.6-.4-3.3-.1-4.6.8Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7c0-2 .9-3.4 2.6-4"/><path fill="#0e0a12" d="m8 11.5 1.6 2.2H6.4Zm8 0 1.6 2.2h-3.2ZM8 16.2l1.3.8 1.3-.8 1.4.8 1.4-.8 1.3.8 1.3-.8-.4 1.6H8.4Z"/></svg>',
+  bat: '<svg viewBox="0 0 64 28" aria-hidden="true"><path fill="currentColor" d="M32 10c-1-3-1-5 0-7l1.5 3h1L36 3c1 2 1 4 0 7 5-3 11-6 18-6 3 0 7 1 10 4-4-1-8 0-10 3-3-1-6 0-8 3-3-1-7 0-9 3l-5 8-5-8c-2-3-6-4-9-3-2-3-5-4-8-3-2-3-6-4-10-3 3-3 7-4 10-4 7 0 13 3 18 6Z"/></svg>',
   discord: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.37-.44.86-.61 1.25a18.3 18.3 0 0 0-5.49 0 12.6 12.6 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.1 13.1 13.1 0 0 1-1.87-.9.08.08 0 0 1-.01-.12l.37-.3a.07.07 0 0 1 .08-.01c3.93 1.8 8.18 1.8 12.06 0a.07.07 0 0 1 .08.01l.37.3a.08.08 0 0 1-.01.12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.1c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .09.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/></svg>',
   cart: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>',
   copy: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
@@ -1471,6 +1520,7 @@ function navHTML(base, current) {
     <div class="nav-ext">
       ${iconLink(DISCORD, "Discord", ICON.discord)}
       ${iconLink(STORE, "Store", ICON.cart)}
+      <button class="icon-btn theme-btn js-theme" type="button" aria-pressed="true" aria-label="Halloween theme" data-tip="Halloween theme">${ICON.pumpkin}</button>
       ${ipButton("small", "Play now")}
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
@@ -1478,7 +1528,7 @@ function navHTML(base, current) {
   <div class="sheet" id="sheet" hidden>
     <nav class="wrap" aria-label="Menu">
       ${give}${NAV_LINKS.map(l => link(l)).join("")}<a href="${base}#ranks">Ranks</a><a href="${base}#story">Our story</a><a href="${base}#team">The team</a><a href="${base}#join">How to join</a>
-      <div class="sheet-foot">${ipButton()}<div class="sheet-icons">${iconLink(DISCORD, "Discord", ICON.discord)}${iconLink(STORE, "Store", ICON.cart)}</div></div>
+      <div class="sheet-foot">${ipButton()}<div class="sheet-icons">${iconLink(DISCORD, "Discord", ICON.discord)}${iconLink(STORE, "Store", ICON.cart)}<button class="icon-btn theme-btn js-theme" type="button" aria-pressed="true" aria-label="Halloween theme" data-tip="Halloween theme">${ICON.pumpkin}</button></div></div>
     </nav>
   </div>
 </header>`;
@@ -1517,12 +1567,13 @@ ${navHTML("")}
 
 <main id="main">
 <section class="hero" id="top" aria-label="CandySim">
+  <div class="hw-deco" aria-hidden="true"><i class="hw-moon"></i><i class="hw-fog"></i>${[[12, 19, 0], [26, 27, -9], [40, 24, -15], [18, 31, -21]].map(([top, d, w]) => `<i class="hw-bat" style="top:${top}%;--d:${d}s;--w:${w}s">${ICON.bat}</i>`).join("")}</div>
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <div class="hero-meta">${livePill("liveHero")}<span class="meta-ip">Java Edition · ${IP}</span>${giveawayPromoted() ? `<a class="give-pill" href="${GIVEAWAY.href}"><i class="give-dot" aria-hidden="true"></i>${esc(GIVEAWAY.title)}<span class="ico">${ICON.arrow}</span></a>` : ""}</div>
+      <div class="hero-meta">${livePill("liveHero")}<span class="meta-ip">Java Edition · ${IP}</span><span class="hw-pill">${ICON.pumpkin.replace('aria-hidden="true"', 'aria-hidden="true" width="15" height="15"')}Halloween event live · <code class="cmd">/halloween</code></span>${giveawayPromoted() ? `<a class="give-pill" href="${GIVEAWAY.href}"><i class="give-dot" aria-hidden="true"></i>${esc(GIVEAWAY.title)}<span class="ico">${ICON.arrow}</span></a>` : ""}</div>
       <h1 class="hero-title">${wordmark()}</h1>
       <p class="hero-line">Fill your plot. Sell the candy. <span class="accent">Prestige.</span></p>
-      <p class="lede">Unseal candy machines, place up to 25 on your plot, and they sell every three seconds while you farm, mine and climb all the way to Rebirth 50.</p>
+      <p class="lede">Unseal candy machines, place up to 25 on your plot, and they sell every three seconds while you farm, mine and climb all the way to Rebirth 100.</p>
       <div class="hero-actions">${ipButton("big")}<a class="btn-ghost" href="#loop">How it works <span class="ico">${ICON.down}</span></a></div>
     </div>
   </div>
@@ -1549,7 +1600,7 @@ ${navHTML("")}
       <span class="kicker">Your plot</span>
       <h2>25 squares. One machine on each.</h2>
       <div class="prose">
-        <p>Your plot is a 5 by 5 grid on a black and white tile floor. You start with one free square. Prestiging earns unlock credits, one every 5 Prestiges to begin with, and you pick which square opens next in <code class="cmd">/plot pick</code>.</p>
+        <p>Your plot is a 5 by 5 grid on a black and white tile floor. You start with one free square. Prestiging earns unlock credits, one every 25 Prestiges to begin with, and you pick which square opens next in <code class="cmd">/plot pick</code>.</p>
         <p>Store ranks add a head start: ${RANK_SQUARES.map(([r, n]) => `${r} +${n}`).join(", ")} bonus squares. Fill all 25 and your plot is maxed.</p>
         <p>Past that, <code class="cmd">/vm</code> opens at Prestige 500 with up to 20 Virtual Machines that need no squares at all.</p>
       </div>
@@ -1571,11 +1622,11 @@ ${navHTML("")}
     <div class="reveal">
       <div class="sec-head" style="margin-bottom:26px">
         <span class="kicker">Machines</span>
-        <h2>15,000 tiers, every one a candy.</h2>
+        <h2>20,000 tiers, every one a candy.</h2>
       </div>
       <div class="prose">
         <p>Sealed machines open with a <strong>rarity</strong> and four rolled stats: Speed, Yield, Luck and Sell. Right click a placed machine to upgrade it. The name changes every tier, from Sugar Dust to Hallowed Taffy at Tier 650, then starts over as Sugar Dust II.</p>
-        <p>You can see progress on your plot: the machine's glass block changes color with the tier, and the stove spinning inside it changes every 20 tiers up to Tier 81.</p>
+        <p>You can see progress on your plot: the glass changes color with the tier and the whole machine grows up to Tier 550. The stove turning inside changes every 20 tiers up to Tier 81. Every 3 seconds the honey tray fills, a candy in the tier color pops out of the top, and Rare and better machines glow with their rarity bits orbiting around them.</p>
       </div>
       <div class="stoves" id="stoves">${STOVES.map(([k, label]) => `<figure><canvas width="8" height="8" data-stove="${k}" aria-hidden="true"></canvas><figcaption>${label}</figcaption></figure>`).join("")}</div>
       <div class="odds">${RARITIES.map(r => `<div><span><span class="dot" style="background:${r.hex}"></span>${r.name}</span><span>${r.odds}</span></div>`).join("")}</div>
@@ -1650,23 +1701,24 @@ ${navHTML("")}
     <ol class="cycle reveal" aria-label="The progression cycle">
       <li><b>Climb</b><span>Grow income, upgrade machines</span></li>
       <li><b>Prestige</b><span>Points for <code class="cmd">/prestigeshop</code>, credits for squares</span></li>
-      <li><b>Hit the cap</b><span>Prestige 1,000 at Rebirth 0</span></li>
+      <li><b>Hit the cap</b><span>Prestige 1,000 at Rebirth 0, 50 more each Rebirth</span></li>
       <li><b>Rebirth</b><span>Money, Tokens and machines reset</span></li>
       <li class="back"><b>Stronger</b><span>Bigger multipliers, a Rebirth Point</span></li>
     </ol>
     <div class="calc reveal">
       <div class="calc-in">
         <div class="reb-big num" id="rebBig">0</div>
-        <label class="meta" for="rebRange">Rebirths, 0 to 50</label>
-        <input type="range" id="rebRange" min="0" max="50" value="0">
+        <label class="meta" for="rebRange">Rebirths, 0 to 100</label>
+        <input type="range" id="rebRange" min="0" max="100" value="0">
         <p class="prose"><span style="color:var(--muted)">Rebirth Points go into <code class="cmd">/rebirthtree</code>: ${TREE_BRANCHES.join(", ")}.</span></p>
       </div>
       <div class="calc-out">
         <div><span>Prestige needed to Rebirth</span><b id="cPres">P1,000</b></div>
-        <div><span>Money, XP, Tokens, Tickets and Luck</span><b id="cMult">1.00x</b></div>
-        <div><span>Pet multiplier</span><b id="cPet">1.00x</b></div>
+        <div><span>Money and XP</span><b id="cMult">1.00x</b></div>
+        <div><span>Tokens, Tickets and Luck (up to Rebirth 50)</span><b id="cTok">1.00x</b></div>
+        <div><span>Pet multiplier (up to Rebirth 50)</span><b id="cPet">1.00x</b></div>
         <div><span>Rebirth Points earned</span><b id="cPts">0</b></div>
-        <div><span>Gems 💎 every 50 Prestige, once per account</span><b>+15</b></div>
+        <div><span>Gems 💎 for every 100 Prestige you reach, in <code class="cmd">/milestones</code></span><b>+5</b></div>
       </div>
     </div>
   </div>
