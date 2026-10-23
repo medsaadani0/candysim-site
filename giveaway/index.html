@@ -1301,7 +1301,7 @@ const RANKS = [
   { name: "Chef", tag: "CHEF", color: "#00FFFF", dark: "#009999", multi: "1.5", pets: "2", squares: 2, hoe: 8, aquarium: 2, daily: 25, buyAll: false,
     cmds: ["/nick", "/lay"], price: 1400, upgrade: 800, bundle: 1780 },
   { name: "Pro", tag: "PRO", color: "#FF0088", dark: "#B3005F", multi: "1.75", pets: "2.5", squares: 3, hoe: 11, aquarium: 3, daily: 40, buyAll: true,
-    cmds: ["/fly", "/crawl", "/glow"], price: 3200, upgrade: 1800, bundle: 3640 },
+    cmds: ["/crawl", "/glow"], price: 3200, upgrade: 1800, bundle: 3640 },
   { name: "Master", tag: "MASTER", color: "#FF3333", dark: "#A30000", multi: "2.15", pets: "3", squares: 4, hoe: 15, aquarium: 5, daily: 60, buyAll: true,
     cmds: ["/spin"], price: 7000, upgrade: 3800, bundle: 6720 },
   { name: "Supreme", tag: "SUPREME", color: "#9D4EDD", dark: "#3C096C", multi: "2.75", pets: "4", squares: 5, hoe: 20, aquarium: 6, daily: 80, buyAll: true,
@@ -1855,7 +1855,7 @@ ${navHTML("")}
       <p class="rank-up">${r.upgrade ? `${r.upgrade.toLocaleString("en-US")} Gems to upgrade from ${RANKS[i - 1].name}` : "The first step up"}</p>
     </article>`).join("")}</div>
     <div class="ranks-foot reveal">
-      <p>Earn Gems in game (<code class="cmd">/daily</code>, Prestige milestones, linking Discord) or grab a pack at the store. Bundles add lootboxes, a tag and a badge, from ${RANKS[0].bundle.toLocaleString("en-US")} Gems.</p>
+      <p>Earn Gems in game (<code class="cmd">/daily</code>, Prestige milestones, linking Discord) or grab a pack at the store. Linking your Discord also unlocks <code class="cmd">/fly</code> for free. Bundles add lootboxes, a tag and a badge, from ${RANKS[0].bundle.toLocaleString("en-US")} Gems.</p>
       <a class="btn-ghost" href="${STORE}" target="_blank" rel="noopener">${ICON.cart}Get Gems</a>
     </div>
   </div>
