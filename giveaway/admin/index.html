@@ -517,8 +517,8 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 }
 
 /* Team */
-.team { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto; gap: 28px 40px; }
-.member.owner { grid-row: span 2; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; padding: 32px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+.team { display: grid; gap: 20px; }
+.member.owner { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; justify-content: center; padding: 32px 44px; border: 1px solid color-mix(in srgb, #ff3b3b 35%, var(--line)); border-radius: var(--r-lg); background: var(--surface); background-image: radial-gradient(70% 140% at 0% 50%, color-mix(in srgb, #ff3b3b 13%, transparent), transparent 70%); }
 .member.owner .body { width: 96px; height: 192px; image-rendering: pixelated; filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.45)); }
 .member.owner .member-id { display: grid; gap: 8px; justify-items: start; }
 .member.owner h3 { font: 800 clamp(32px, 3.4vw, 42px)/1 var(--display); font-stretch: 88%; letter-spacing: -0.01em; }
@@ -526,24 +526,29 @@ footer.foot { border-top: 1px solid var(--line); padding-block: 64px 32px; color
 .member .dc { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 14px; }
 .member .dc svg { width: 15px; height: 15px; color: var(--discord); }
 .btn-ghost.small { padding: 9px 14px; border-radius: 10px; font-size: 14px; margin-top: 8px; background: none; }
-.team-group { display: grid; gap: 12px; align-content: start; }
-.group-name { font: 700 12.5px/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
-.members { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.members .member { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 12px 16px 12px 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); text-align: left; transition: border-color 0.2s, background 0.2s; }
-.members .member:hover { border-color: var(--line-2); background: var(--surface-2); }
+.team-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.team-group { --gc: var(--gold); display: grid; gap: 14px; align-content: start; padding: 20px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); border-top: 3px solid var(--gc);
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--gc) 9%, transparent), transparent 90px); }
+.group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.group-name { font: 800 13px/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--gc); }
+.group-count { font: 600 12px/1 var(--sans); color: var(--dim); }
+.members { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.members .member { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 10px 14px 10px 10px; border: 1px solid var(--line); border-radius: var(--r); background: color-mix(in srgb, var(--bg, #0e0a12) 55%, var(--surface)); text-align: left; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+.members .member:hover { border-color: color-mix(in srgb, var(--gc) 55%, transparent); background: var(--surface-2); transform: translateY(-1px); }
 .members .head { width: 44px; height: 44px; border-radius: 9px; image-rendering: pixelated; }
 .members .member-id { display: grid; gap: 2px; min-width: 0; }
 .members .member-id b { font-weight: 700; font-size: 16px; overflow: hidden; text-overflow: ellipsis; }
 .members .dc { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
 .members .role { display: none; }
 @media (max-width: 980px) {
-  .team { grid-template-columns: 1fr; }
-  .member.owner { grid-row: auto; }
+  .team-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
   .member.owner { padding: 24px; gap: 20px; }
   .member.owner .body { width: 72px; height: 144px; }
-  .members { grid-template-columns: 1fr; }
+  .team-groups { grid-template-columns: 1fr; }
+  .member.owner { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 24px; }
+  .member.owner .member-id { justify-items: center; }
 }
 
 /* Quiet loading states while the 3D scenes start */
@@ -1259,16 +1264,16 @@ const ICON = {
 // The people behind CandySim. Skins come from the player data at build time.
 const TEAM = [
   { group: "Owner", people: [{ n: "Med___", role: "Owner &amp; Main Developer", dc: "med.saadani" }] },
-  { group: "Helpers", people: [
+  { group: "Helpers", color: "#3399FF", people: [
     { n: "LunarLiliana", role: "Helper", dc: "maxxyv." },
     { n: "__Zeko", role: "Helper", dc: "xrhstoc" },
     { n: "JMV15243", role: "Helper", dc: "jmv15243" },
     { n: "Chxruu", role: "Helper", dc: "Chxruu" },
   ] },
-  { group: "Builders", people: [
+  { group: "Builders", color: "#2DD4BF", people: [
     { n: "pclam", role: "Builder", dc: "pclam" },
   ] },
-  { group: "Trainees", people: [
+  { group: "Trainees", color: "#2ED573", people: [
     { n: "DHeaven", role: "Trainee", dc: "life_55766" },
     { n: "ABGibby", role: "Trainee", dc: "gibbyxo" },
     { n: "Carinoh", role: "Trainee", dc: "Carinoh" },
@@ -1797,14 +1802,15 @@ ${giveawayOnHome() ? giveawayBlocksHTML("h2") : ""}
       <p class="lede">The people who build, run and moderate the server. Say hi in game or on the Discord.</p>
     </div>
     <div class="team reveal">
-      ${TEAM.map(g => g.group === "Owner" ? g.people.map(m => `<article class="member owner">
+      ${TEAM.filter(g => g.group === "Owner").map(g => g.people.map(m => `<article class="member owner">
         ${ASSETS.people && ASSETS.people[m.n] ? `<img class="body" src="${ASSETS.people[m.n].body}" alt="${m.n}'s Minecraft skin" width="16" height="32">` : ""}
         <div class="member-id"><span class="role">${m.role}</span><h3>${ign(m.n)}</h3><span class="dc">${ICON.discord}@${m.dc}</span>
         <button class="btn-ghost small" data-p="${m.n}">View profile</button></div>
-      </article>`).join("") : `<div class="team-group"><b class="group-name">${g.group}</b><div class="members">${g.people.map(m => `<button class="member" data-p="${m.n}" aria-label="${m.n}, ${m.role}. View profile">
+      </article>`).join("")).join("")}
+      <div class="team-groups">${TEAM.filter(g => g.group !== "Owner").map(g => `<div class="team-group" style="--gc:${g.color}"><div class="group-head"><b class="group-name">${g.group}</b><span class="group-count">${g.people.length}</span></div><div class="members">${g.people.map(m => `<button class="member" data-p="${m.n}" aria-label="${m.n}, ${m.role}. View profile">
         ${ASSETS.people && ASSETS.people[m.n] ? `<img class="head" src="${ASSETS.people[m.n].face}" alt="" width="8" height="8">` : ""}
         <span class="member-id"><b>${ign(m.n)}</b><span class="dc">@${m.dc}</span></span><span class="role">${m.role}</span>
-      </button>`).join("")}</div></div>`).join("")}
+      </button>`).join("")}</div></div>`).join("")}</div>
     </div>
   </div>
 </section>
