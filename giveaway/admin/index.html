@@ -1199,7 +1199,12 @@ function fmt(n) {                                          // mirrors formatNumb
   while (v >= 1000 && s < 121) { v /= 1000; s++; }
   return String(Math.floor(v * 100) / 100) + SUFFIX[s - 1];
 }
-function hours(sec) { const h = Math.floor((sec || 0) / 3600), m = Math.floor(((sec || 0) % 3600) / 60); return `${h.toLocaleString("en-US")}h ${m}m`; }
+function hours(sec) {                                     // 59m, 5h 12m, 3d 4h, 2w 3d
+  const s = sec || 0, w = Math.floor(s / 604800), d = Math.floor(s / 86400), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  if (w >= 1) return `${w.toLocaleString("en-US")}w ${d % 7}d`;
+  if (d >= 1) return `${d}d ${h % 24}h`;
+  return `${h}h ${m}m`;
+}
 function roman(n) {
   const map = [[1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"], [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]];
   let out = "";
@@ -1263,20 +1268,20 @@ const ICON = {
 // The people behind CandySim. Skins come from the player data at build time.
 const TEAM = [
   { group: "Owner", people: [{ n: "Med___", role: "Owner &amp; Main Developer", dc: "med.saadani" }] },
-  { group: "Helpers", color: "#3399FF", people: [
-    { n: "LunarLiliana", role: "Helper", dc: "maxxyv." },
-    { n: "__Zeko", role: "Helper", dc: "xrhstoc" },
-    { n: "JMV15243", role: "Helper", dc: "jmv15243" },
-    { n: "Chxruu", role: "Helper", dc: "Chxruu" },
+  { group: "Jr Mods", color: "#3399FF", people: [
+    { n: "Chxruu", role: "Jr Mod", dc: "Chxruu" },
+    { n: "SodaMachineV2500", role: "Jr Mod", dc: "SodaMachineV2500" },
+  ] },
+  { group: "Helpers", color: "#A78BFA", people: [
+    { n: "Rqlyee", role: "Helper" },
+    { n: "ilovebrushing", role: "Helper" },
+  ] },
+  { group: "Trainees", color: "#2ED573", people: [
+    { n: "huba129", role: "Trainee" },
+    { n: "V_Keys", role: "Trainee" },
   ] },
   { group: "Builders", color: "#2DD4BF", people: [
     { n: "pclam", role: "Builder", dc: "pclam" },
-  ] },
-  { group: "Trainees", color: "#2ED573", people: [
-    { n: "DHeaven", role: "Trainee", dc: "life_55766" },
-    { n: "ABGibby", role: "Trainee", dc: "gibbyxo" },
-    { n: "Carinoh", role: "Trainee", dc: "Carinoh" },
-    { n: "SodaMachineV2500", role: "Trainee", dc: "SodaMachineV2500" },
   ] },
 ];
 
@@ -1834,7 +1839,7 @@ ${giveawayOnHome() ? giveawayBlocksHTML("h2") : ""}
       </article>`).join("")).join("")}
       <div class="team-groups">${TEAM.filter(g => g.group !== "Owner").map(g => `<div class="team-group" style="--gc:${g.color}"><div class="group-head"><b class="group-name">${g.group}</b><span class="group-count">${g.people.length}</span></div><div class="members">${g.people.map(m => `<button class="member" data-p="${m.n}" aria-label="${m.n}, ${m.role}. View profile">
         ${ASSETS.people && ASSETS.people[m.n] ? `<img class="head" src="${ASSETS.people[m.n].face}" alt="" width="8" height="8">` : ""}
-        <span class="member-id"><b>${ign(m.n)}</b><span class="dc">@${m.dc}</span></span><span class="role">${m.role}</span>
+        <span class="member-id"><b>${ign(m.n)}</b>${m.dc ? `<span class="dc">@${m.dc}</span>` : ""}</span><span class="role">${m.role}</span>
       </button>`).join("")}</div></div>`).join("")}</div>
     </div>
   </div>
