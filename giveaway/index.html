@@ -827,6 +827,23 @@ html[data-theme="halloween"] .logo:has(.logo-hw) .logo-std { display: none; }
 /* Between seasons: the server is closed. */
 .closed-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255, 79, 163, 0.45); background: rgba(255, 79, 163, 0.1); color: #ffb3d6; font: 600 13px/1 var(--sans); }
 
+/* Staff roster: one portrait card per person, coloured by role. */
+.roster { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.crew { --gc: var(--gold); position: relative; flex: 0 1 200px; min-width: 0; display: grid; justify-items: center; align-content: start; gap: 8px; padding: 0 16px 20px; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; cursor: pointer; color: inherit; font: inherit; text-align: center;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--gc) 16%, var(--surface)) 0%, var(--surface) 62%); transition: transform 0.2s var(--ease), border-color 0.2s, box-shadow 0.25s; }
+.crew::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--gc); }
+.crew:hover, .crew:focus-visible { transform: translateY(-3px); border-color: color-mix(in srgb, var(--gc) 60%, transparent); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px color-mix(in srgb, var(--gc) 25%, transparent); }
+.crew-stage { position: relative; display: grid; place-items: end center; width: 100%; height: 156px; padding-top: 18px; }
+.crew-stage::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 92px; height: 18px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--gc) 45%, transparent), transparent); }
+.crew-body { position: relative; z-index: 1; width: 64px; height: 128px; image-rendering: pixelated; filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.45)); transition: transform 0.25s var(--ease); }
+.crew:hover .crew-body { transform: translateY(-4px); }
+.crew-face { position: relative; z-index: 1; width: 72px; height: 72px; margin-bottom: 22px; border-radius: 12px; image-rendering: pixelated; box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45); }
+.crew-role { margin-top: 6px; padding: 5px 10px; border-radius: 999px; font: 700 11px/1 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gc); background: color-mix(in srgb, var(--gc) 14%, transparent); border: 1px solid color-mix(in srgb, var(--gc) 35%, transparent); }
+.crew-name { max-width: 100%; font: 800 16px/1.2 var(--display); font-stretch: 80%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.crew-dc { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+.crew-dc svg { width: 14px; height: 14px; color: var(--discord); }
+@media (max-width: 520px) { .roster { gap: 12px; } .crew { flex-basis: calc(50% - 6px); } .crew-stage { height: 130px; } .crew-body { width: 52px; height: 104px; } }
+
 /* The launch giveaway. Same dark CandySim world, with the rainbow kept to this
    page: one slow aurora behind the prize, an iridescent prize border, a few
    pixel candies. Everything decorative stops under reduced motion. */
@@ -1324,18 +1341,19 @@ const CROPS = [
 const ENCHANTS = ["Harvest", "Scholar", "Growth", "Fortune", "Genius", "Bounty", "Shiny Finder", "TNT", "Nuke",
   "Gem Finder", "Key Finder", "Ticket Finder", "Lootbox Finder", "Fragment Finder", "Book Finder", "Windfall",
   "Payday", "Flashback", "Double Crop", "Triple Crop", "Cultivator", "Fragment Bundles", "Blessings",
-  "Armor Expert", "Candy Rain"];                         // farm.sk enchant names
+  "Armor Expert", "Candy Rain", "Speed", "Combo", "Overdrive", "Tokenhaul", "XP Magnet"];                         // farm.sk enchant names
 const BOSS = ["Boss Damage", "Boss Fortune", "Boss Luck", "Boss Money", "Boss Pierce", "Boss Tokens", "Boss XP"]; // boss.sk
 const TREE_BRANCHES = ["Money", "Tickets", "Upgrade Discount", "Tokens", "XP"]; // arebirthtree.sk, 5 branches, every node 2 levels, 100 points maxes it
 // pets.sk rarity names and colors
 const PET_RARITIES = [["Common", "#AAAAAA"], ["Uncommon", "#55FF55"], ["Rare", "#5555FF"], ["Legendary", "#FFAA00"],
   ["Mythic", "#FF55FF"], ["Celestial", "#55FFFF"], ["Divine", "#FFD700"], ["Ethereal", "#8A2BE2"],
   ["Transcendent", "#FF073A"], ["Ascendant", "#FF6B35"], ["Eternal", "#D8D8D8"], ["Astral", "#7C4DFF"],
-  ["Celestium", "#00E5FF"], ["Infinite", "#00FF87"], ["Omniscient", "#FFEA00"], ["Apex", "#B026FF"]];
+  ["Celestium", "#00E5FF"], ["Infinite", "#00FF87"], ["Omniscient", "#FFEA00"], ["Apex", "#B026FF"],
+  ["Primordial", "#ABD962"], ["Sovereign", "#D9667A"], ["Paradox", "#2491F2"], ["Eclipse", "#C79BFF"], ["Singularity", "#F066CC"], ["Genesis", "#21D9A0"]]; // + petcats.sk 18 to 23
 const MUTATIONS = ["Normal", "Bronze", "Silver", "Gold", "Platinum", "Prismatic"]; // petsmerge.sk
 const PET_EXAMPLES = ["Gummy Bear", "Lollipop", "Jawbreaker", "Chocolate Frog", "Taffy Dragon", "Frosted Phoenix",
   "Candy Golem", "Dark Choco Reaper", "Rainbow Serpent", "Gingerbread Knight", "Moonlit Meringue", "Ambrosia Dragon",
-  "Nebula Nougat", "Omniscient Truffle", "Genesis Gumball"];
+  "Nebula Nougat", "Omniscient Truffle", "Genesis Gumball", "Eclipse Totality", "Singularity Void", "Genesis Alpha"];
 // mine.sk ore names and Prestige requirements
 const ORES = [["Coal Ore", 100], ["Iron Ore", 140], ["Gold Ore", 180], ["Diamond Ore", 225], ["Emerald Ore", 270],
   ["Coal Block", 320], ["Iron Block", 375], ["Gold Block", 435], ["Diamond Block", 500], ["Emerald Block", 570],
@@ -1402,17 +1420,23 @@ function showAddress(btn) {
 function titleCase(s) { return s.replace(/\b\w/g, c => c.toUpperCase()); }
 
 // Icons, drawn inline so they stay crisp and follow the text color.
-// The Features section: systems added in Season 3 (pond.sk, hoeability.sk, mayor.sk).
+// The Features section: systems added in Season 3 (pond.sk + fishupd.sk, hoeability.sk, mayor.sk, pickability.sk, challenges.sk).
 const FEATURES = [
   { id: "pond", name: "Candy Pond", cmd: "/pond", color: "#3ab3da", gate: "Opens at Prestige 250",
-    text: "Cast for 60 kinds of fish across 7 rarities, from tiny ones to Titanic. Keep the heaviest in your Aquarium: their weight boosts your Money, Tokens and XP, up to <strong>+1,250%</strong>.",
-    more: ["20 rod tiers and Auto Fish", "Fish Index rewards", "Merge fish to make them heavier"] },
+    text: "Cast for 137 kinds of fish across 9 rarities, plus fish that only bite in certain weather, under a Full Moon or during events. Keep the heaviest in your Aquarium: their weight boosts your Money, Tokens and XP, past <strong>+1,250%</strong>.",
+    more: ["20 rod tiers and Auto Fish", "Giant, Colossal, Titanic and Prismatic mutations", "Fish Index rewards and fish merging"] },
   { id: "abilities", name: "Hoe Abilities", cmd: "Hoe Enchants", color: "#ffc94d", gate: "Open at Prestige 0, 150 and 300",
     text: "Farm to charge your hoe, then press <strong>F</strong> for 10 seconds of chaos. Level each one up to 5 with Gems.",
     more: ["Harvest Storm: TNT that clears every crop around you", "Golden Hour: Tokens up to x5", "Lucky Streak: finders up to x4"] },
   { id: "mayor", name: "Mayor", cmd: "/mayor", color: "#62e3a0", gate: "Everyone can vote",
     text: "Three candidates, a new election every 16 hours. Vote with Tickets. The winner gives everyone <strong>+20%</strong> to their stat, a perk for the whole term and a surprise 5 minute x2 event.",
     more: ["Cheaper Machine Rolls, faster ability charge or more rare fish", "Back the winner: double your Tickets back + 5 Gems"] },
+  { id: "pickab", name: "Pick Abilities", cmd: "/mine", color: "#a0b4c8", gate: "Open at Prestige 1,000, 1,200 and 1,400",
+    text: "Mine to charge your pick, then press <strong>F</strong> for 10 seconds of power, just like the hoe.",
+    more: ["Vein Miner: breaks the blocks around each one you mine", "Shockwave: bombs that blast every block around them", "Gold Rush: Golden Tickets up to x2.5"] },
+  { id: "challenges", name: "Challenges", cmd: "/challenges", color: "#ff8f5c", gate: "A new set every 3 days",
+    text: "Hard goals in Farming, Mining and Fishing, four in each, with a timer. Finish them for Challenge Coins and spend those in the Coin Shop on exclusive cosmetics.",
+    more: ["Picked for your Prestige", "Reroll a category once per set"] },
 ];
 const ICON = {
   pumpkin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7.2c-1.3-.9-3-1.2-4.6-.8C4.5 7.2 3 10.2 3 13.6 3 17.2 5 20 8 20c1.5 0 2.6-.6 4-.6s2.5.6 4 .6c3 0 5-2.8 5-6.4 0-3.4-1.5-6.4-4.4-7.2-1.6-.4-3.3-.1-4.6.8Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7c0-2 .9-3.4 2.6-4"/><path fill="#0e0a12" d="m8 11.5 1.6 2.2H6.4Zm8 0 1.6 2.2h-3.2ZM8 16.2l1.3.8 1.3-.8 1.4.8 1.4-.8 1.3.8 1.3-.8-.4 1.6H8.4Z"/></svg>',
@@ -1439,12 +1463,12 @@ const TEAM = [
     { n: "Rqlyee", role: "Helper" },
     { n: "ilovebrushing", role: "Helper" },
   ] },
+  { group: "Builders", color: "#2DD4BF", people: [
+    { n: "pclam", role: "Builder", dc: "pclam" },
+  ] },
   { group: "Trainees", color: "#2ED573", people: [
     { n: "huba129", role: "Trainee" },
     { n: "V_Keys", role: "Trainee" },
-  ] },
-  { group: "Builders", color: "#2DD4BF", people: [
-    { n: "pclam", role: "Builder", dc: "pclam" },
   ] },
 ];
 
@@ -1473,8 +1497,8 @@ const HISTORY = [
     ["Sep 17", "Season 2 closed"],
   ] },
   { era: "Season 3", span: "October to November 2026", events: [
-    ["Oct 23", "Season 3 released: 20,000 Tiers, Rebirth 100, the Pond, Hoe Abilities, the Mayor and a Halloween event", true],
-    ["Nov 12", "Season 3 closed, after two Admin Abuse events"],
+    ["Oct 23", "Season 3 released with the Pond and a Halloween event", true],
+    ["Nov 12", "Season 3 closed"],
   ] },
 ];
 
@@ -1789,7 +1813,7 @@ ${navHTML("")}
       </article>
       <article class="reveal">
         <h3>The Mine <code class="cmd">/mine</code></h3>
-        <p>Opens at Prestige 100. ${ORES.length} ores, from ${ORES[0][0]} to ${ORES[ORES.length - 1][0]}, drop Forge components and Golden Tickets. Forge components into Machine Parts and install them to boost your machines.</p>
+        <p>Opens at Prestige 100. ${ORES.length} ores, from ${ORES[0][0]} to ${ORES[ORES.length - 1][0]}, drop Forge components and Golden Tickets. Forge components into Machine Parts and install them to boost your machines. Every 3 hours an Ore Rush makes one ore pay x2.5 Golden Tickets for 10 minutes, and Sugar Geodes crack open into prizes.</p>
       </article>
     </div>
   </div>
@@ -1816,13 +1840,13 @@ ${navHTML("")}
   <div class="wrap split pets">
     <div class="sec-head reveal" style="margin:0">
       <span class="kicker">Pets</span>
-      <h2>103 pets. 16 rarities.</h2>
-      <p class="lede">Hatch them, equip five, merge the rest. Five copies of one pet merge into its next mutation.</p>
+      <h2>139 pets. 22 rarities.</h2>
+      <p class="lede">Hatch them, equip up to five, merge the rest. Some come out Shiny, worth +20% on every copy. Five copies of one pet merge into its next mutation.</p>
       <p class="pet-names">From ${PET_EXAMPLES.slice(0, 3).join(", ")} up to ${PET_EXAMPLES.slice(-3).join(", ")}.</p>
     </div>
     <div class="reveal">
       <div class="spectrum" id="spectrum">${PET_RARITIES.map(([n, c], i) => `<i style="background:${c}" data-i="${i}" title="${n}"></i>`).join("")}</div>
-      <div class="spec-labels"><span>Common</span><span>Apex</span></div>
+      <div class="spec-labels"><span>Common</span><span>Genesis</span></div>
       <p class="spec-read" id="specRead"></p>
       <div class="merge">${MUTATIONS.map((m, i) => `<span class="step">${i ? '<em aria-hidden="true">→</em>' : ""}<span>${m}</span></span>`).join("")}</div>
     </div>
@@ -2000,10 +2024,12 @@ ${giveawayOnHome() ? giveawayBlocksHTML("h2") : ""}
         <div class="member-id"><span class="role">${m.role}</span><h3>${ign(m.n)}</h3><span class="dc">${ICON.discord}@${m.dc}</span>
         <button class="btn-ghost small" data-p="${m.n}">View profile</button></div>
       </article>`).join("")).join("")}
-      <div class="team-groups">${TEAM.filter(g => g.group !== "Owner").map(g => `<div class="team-group" style="--gc:${g.color}"><div class="group-head"><b class="group-name">${g.group}</b><span class="group-count">${g.people.length}</span></div><div class="members">${g.people.map(m => `<button class="member" data-p="${m.n}" aria-label="${m.n}, ${m.role}. View profile">
-        ${ASSETS.people && ASSETS.people[m.n] ? `<img class="head" src="${ASSETS.people[m.n].face}" alt="" width="8" height="8">` : ""}
-        <span class="member-id"><b>${ign(m.n)}</b>${m.dc ? `<span class="dc">@${m.dc}</span>` : ""}</span><span class="role">${m.role}</span>
-      </button>`).join("")}</div></div>`).join("")}</div>
+      <div class="roster">${TEAM.filter(g => g.group !== "Owner").flatMap(g => g.people.map(m => ({ ...m, c: g.color }))).map(m => `<button class="crew" data-p="${m.n}" style="--gc:${m.c}" aria-label="${m.n}, ${m.role}. View profile">
+        <span class="crew-stage">${ASSETS.people && ASSETS.people[m.n] && ASSETS.people[m.n].body ? `<img class="crew-body" src="${ASSETS.people[m.n].body}" alt="" width="16" height="32">` : ASSETS.people && ASSETS.people[m.n] ? `<img class="crew-face" src="${ASSETS.people[m.n].face}" alt="" width="8" height="8">` : ""}</span>
+        <span class="crew-role">${m.role}</span>
+        <b class="crew-name">${ign(m.n)}</b>
+        ${m.dc ? `<span class="crew-dc">${ICON.discord}@${m.dc}</span>` : ""}
+      </button>`).join("")}</div>
     </div>
   </div>
 </section>
